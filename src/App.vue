@@ -1,30 +1,43 @@
 <template>
-  <div class="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="" >
+        <!-- <div class="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link>
+      </div> -->
+      <router-view />
+      <div class="icon-chat">
+        <img src="@/assets/images/icon-whatssap.png" alt="">
+      </div>
+      <footerP></footerP>
   </div>
-  <router-view />
 </template>
 
+<script>
+
+import footerP from '@/components/footerP.vue'
+export default {
+   name: 'App',
+   components:{
+     footerP
+   }
+}
+</script>
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-.nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+@import "./assets/css/variables.scss";
+  .banner{
+    background-image: url('~@/assets/images/fondo-azul.png');
+    background-size: cover;
+    color:#fff;
+    height: 400px;
+    @include mediaQ(679px){
+    height: 480px;
+      }
   }
-}
+  .icon-chat{
+    position: fixed;
+    right: 1.5em;
+    bottom: 1.5em;
+    cursor: pointer;
+  }
+
 </style>

@@ -1,0 +1,67 @@
+<template>
+    <article class="card">
+        <slot></slot>
+        <div class="card__caption flex items-end">
+            <div class="card__content">
+            <h3 class="mb-5 subtitle__secundary">{{title}}</h3>
+            <div class="flex justify-between">
+                <button class="subtitle__third flex items-center"><i class="large material-icons mr-1">add_circle_outline</i>Ver más</button>
+                <button class="subtitle__third flex items-center"><i class="large material-icons mr-1">add_shopping_cart</i>Agregar al carrito</button>
+            </div>
+            </div>
+        </div>
+    </article>
+</template>
+
+<script>
+
+export default {
+    name:'card',
+    props:{
+        title: String,
+        img: String
+    },
+    data(){
+        return{
+            imgCurso:''
+        }
+    },
+    methods:{
+
+    }
+}
+</script>
+<style lang="scss">
+@import "../assets/css/variables.scss";
+    .card{
+        width: 100%;
+        margin-right: 2em;
+        position: relative;
+        overflow: hidden;
+        border-radius: 7px;
+        margin-bottom: 1em;
+        @include mediaQ(796px){
+            width: 40%;
+            margin-right: 4em;
+      }
+      @include mediaQ(1600px){
+            width: 35%;
+      }
+      img{
+          max-width: 100%;
+      }
+        &__caption{
+            width: 100%;
+            top: 0;
+            color:#fff;
+            bottom:0;
+            background: rgb(0,4,37);
+            background: linear-gradient(360deg, rgba(0,4,37,1) 0%, rgba(0,4,37,0.3449754901960784) 35%);
+            position: absolute;
+        }
+        &__content{
+            width: 100%;
+            padding:1.3em;
+        }
+    }
+</style>

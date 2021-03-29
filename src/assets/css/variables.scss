@@ -1,0 +1,99 @@
+/*colores*/
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+$color-principal: #5640FF;
+$color-secundary: #da168f;
+$color-third:#fff;
+ 
+$color-auxiliar:#eec027;
+$color-auxiliar-secundary:rgb(64, 160, 207);
+
+/*font-weight*/
+
+$font-bold:600;
+$font-normal:400;
+$font-light:300;
+
+/*font-size*/
+$font-size-small:12px;
+$font-size:16px;
+$font-size-large:22px;
+$font-size-xlarge:36px;
+
+/*font-family*/
+$font-roboto:'Roboto', Arial, Helvetica, sans-serif ;
+$font-poppins: 'Poppins', sans-serif, Helvetica, Arial, sans-serif;
+
+//mixins
+@mixin mediaQ($breakpoint) {
+    @media screen and (min-width: $breakpoint){
+      @content;
+    }
+  }
+body{
+    //background-color: #F2F3F5;
+    font-family: $font-roboto;
+    font-size: 14px;
+}
+.fondo-color{
+    background-color: #F2F3F5;
+}
+.title{
+    &__principal{
+        font-family: $font-poppins;
+        font-weight: 700;
+        font-size: 26px;
+        @include mediaQ(679px){
+            font-size: 54px;
+        }
+    }
+    &__secundary{
+        font-family: $font-poppins;
+        font-weight: 500;
+        font-size: 20px;
+    }
+    
+}
+.subtitle{
+    &__principal{
+        font-family: $font-poppins;
+        font-weight: 700;
+        font-size: 20px;
+    }
+    &__secundary{
+        font-family: $font-poppins;
+        font-weight: 500;
+        font-size: 20px;
+    }
+    &__third{
+        font-family: $font-poppins;
+        font-weight: 600;
+        font-size: 14px;
+    }
+    &__basic{
+        font-family: $font-poppins;
+        font-weight: 600;
+        font-size: 16px;
+    }
+}
+.text{
+
+   &__small{
+    font-family: $font-roboto;
+    font-size: 11px;
+   }
+}
+
+input {
+    padding: 1.1em .7em;
+    border: 1px solid rgb(83, 83, 83);
+    margin-bottom: 8px;
+    border-radius: 5px;
+    width: 100%;
+}
+input[type=checkbox]{
+    width:initial;
+}
