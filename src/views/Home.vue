@@ -104,16 +104,16 @@
     <div class="icon-chat">
       <img src="@/assets/images/icon-whatssap.png" alt="" />
     </div>
-    <FooterP></FooterP>
+    <FooterP />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 //mport HelloWorld from '@/components/HelloWorld.vue'
-import HeaderP from "@/components/HeaderP.vue";
-import Card from "@/components/Card.vue";
-import CardLine from "@/components/CardLine.vue";
+import HeaderP from "../components/HeaderP";
+import Card from "../components/Card";
+import CardLine from "../components/CardLine";
 import Btn from "../components/Btn";
 import FooterP from "../components/FooterP";
 

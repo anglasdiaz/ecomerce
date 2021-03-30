@@ -9,12 +9,9 @@
 </template>
 
 <script>
-import footerP from "@/components/footerP.vue";
 export default {
   name: "App",
-  components: {
-    footerP,
-  },
+  components: {},
 };
 </script>
 <style lang="scss">
