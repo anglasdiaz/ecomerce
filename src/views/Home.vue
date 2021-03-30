@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <section class="banner">
-      <headerP />
+      <HeaderP />
       <div class="banner__content mb-2">
         <div class="container mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-3">
@@ -56,12 +56,12 @@
         </h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3">
           <div class="col-span-2 sm:flex ">
-            <card title="Desarrollo Front-End">
+            <Card title="Desarrollo Front-End">
               <img src="../assets/images/marketing_digital2.png" alt="" />
-            </card>
-            <card title="Desarrollo Front-End">
+            </Card>
+            <Card title="Desarrollo Front-End">
               <img src="../assets/images/marketing_digital2.png" alt="" />
-            </card>
+            </Card>
           </div>
         </div>
       </div>
@@ -92,11 +92,11 @@
         <h3 class="subtitle__principal mb-5">Beneficios</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3">
           <div class="col-span-2 md:flex ">
-            <cardLine
+            <CardLine
               icon="person_outline"
               title="Aprende de Expertos"
               text="Aprende directamente de expertos del mercado a través del análisis y solución de problemas de programación. Utilizando los frameworks y herramientas de mayor relevancia dentro del mundo del coding."
-            ></cardLine>
+            ></CardLine>
           </div>
         </div>
       </div>
@@ -104,25 +104,25 @@
     <div class="icon-chat">
       <img src="@/assets/images/icon-whatssap.png" alt="" />
     </div>
-    <footerP></footerP>
+    <FooterP></FooterP>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 //mport HelloWorld from '@/components/HelloWorld.vue'
-import headerP from "@/components/headerP.vue";
-import card from "@/components/card.vue";
-import cardLine from "@/components/cardLine.vue";
+import HeaderP from "@/components/HeaderP.vue";
+import Card from "@/components/Card.vue";
+import CardLine from "@/components/CardLine.vue";
 import Btn from "../components/Btn";
-import FooterP from "../components/footerP.vue";
+import FooterP from "../components/FooterP";
 
 export default {
   name: "Home",
   components: {
-    headerP,
-    card,
-    cardLine,
+    HeaderP,
+    Card,
+    CardLine,
     Btn,
     FooterP,
   },

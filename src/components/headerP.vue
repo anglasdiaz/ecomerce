@@ -4,7 +4,9 @@
       <div class="flex header__container justify-between">
         <img src="../assets/images/logo-pachaqtec.png" alt="" />
         <div class="header__item">
-          <i class="material-icons mx-3">shopping_cart</i>
+          <i class="material-icons hidden lg:inline-block mx-3"
+            >shopping_cart</i
+          >
           <i @click="menuOpenT" class="material-icons">menu</i>
         </div>
       </div>
@@ -20,7 +22,7 @@
 </template>
 <script>
 export default {
-  name: "headerP",
+  name: "HeaderP",
   data() {
     return {
       isActive: false,

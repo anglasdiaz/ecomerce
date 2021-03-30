@@ -1,28 +1,46 @@
 <template>
   <div class="h-4/6 w-3/4 flex justify-center">
-    <form class="w-8/12 relative" action="">
+    <form class="w-8/12 relative" @submit.prevent="creandoUsuario">
       <div class="flex flex-col">
         <label class="absolute left-2 px-1" for="name"
           >Nombres y apellidos</label
         >
-        <input class="max-w-md" type="text" id="name" />
+        <input
+          class="max-w-md"
+          type="text"
+          id="name"
+          required
+          v-model="formData.name"
+        />
       </div>
       <div class="flex flex-col mt-3">
         <label class="absolute left-2 px-1" for="email">Email</label>
-        <input class="max-w-md" type="email" id="email" />
+        <input
+          class="max-w-md"
+          type="email"
+          id="email"
+          required
+          v-model="formData.email"
+        />
       </div>
       <div class="flex flex-col mt-3">
         <label class="absolute left-2 px-1" for="password">Contrasenia</label>
-        <input class="max-w-md" type="password" id="password" />
+        <input
+          class="max-w-md"
+          type="password"
+          id="password"
+          required
+          v-model="formData.password"
+        />
       </div>
       <div class="flex flex-col mt-3">
         <label class="absolute left-2 px-1" for="rpassword"
           >Repite contrasenia</label
         >
-        <input class="max-w-md" type="password" id="rpassword" />
+        <input class="max-w-md" type="password" id="rpassword" required />
       </div>
       <div class="flex items-center mt-3">
-        <input class="max-w-md mb-0" type="checkbox" id="checkbox" />
+        <input class="max-w-md mb-0" type="checkbox" id="checkbox" required />
         <label class="px-1" for="checkbox"
           >Acepto
           <span class="font-bold underline"
@@ -43,9 +61,27 @@
 
 <script>
 import Btn from "../components/Btn";
+import { registerApi } from "../api/user";
+import router from "../router";
+
 export default {
   components: {
     Btn,
+  },
+  data() {
+    return {
+      formData: {
+        name: "",
+        email: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    creandoUsuario() {
+      console.log(this.formData);
+      router.push("/");
+    },
   },
 };
 </script>

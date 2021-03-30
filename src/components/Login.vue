@@ -1,13 +1,13 @@
 <template>
   <div class="h-4/6 w-3/4 flex justify-center">
-    <form class="w-8/12 relative" action="">
+    <form class="w-8/12 relative" @submit.prevent>
       <div class="flex flex-col">
         <label class="absolute left-2 px-1" for="email">Email</label>
-        <input class="max-w-md" type="email" id="email" />
+        <input class="max-w-md" type="email" id="email" required />
       </div>
       <div class="flex flex-col mt-3">
         <label class="absolute left-2 px-1" for="password">Password</label>
-        <input class="max-w-md" type="password" id="password" />
+        <input class="max-w-md" type="password" id="password" required />
       </div>
       <div class="mt-12 xl:mt-64">
         <Btn class="max-w-md" name="Ingresar" />
