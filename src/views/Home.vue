@@ -102,7 +102,11 @@
       </div>
     </section>
     <div class="icon-chat">
-      <img src="@/assets/images/icon-whatssap.png" alt="" />
+      <a
+        target="_blanck"
+        href="https://api.whatsapp.com/send?phone=51954781495&amp;text=Hola!&nbsp;quiero&nbsp;informacion!"
+        ><img src="@/assets/images/icon-whatssap.png" alt=""
+      /></a>
     </div>
     <FooterP />
   </div>
