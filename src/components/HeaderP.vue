@@ -2,10 +2,19 @@
   <nav class="header">
     <div class="container mx-auto ">
       <div class="flex header__container justify-between">
-        <router-link to="/"><img src="../assets/images/logo-pachaqtec.png" alt="" /></router-link>
+        <router-link to="/"
+          ><img src="../assets/images/logo-pachaqtec.png" alt=""
+        /></router-link>
         <div class="header__item">
           <i class="material-icons hidden lg:inline-block mx-3"
-            >shopping_cart</i>
+            >shopping_cart</i
+          >
+          <i
+            v-show="isLogOut"
+            @click="loginOut"
+            class="material-icons hidden lg:inline-block mx-3"
+            >logout</i
+          >
           <i @click="menuOpenT" class="material-icons">menu</i>
         </div>
       </div>
@@ -14,23 +23,54 @@
       <li class="flex justify-end">
         <i class="material-icons " @click="menuOpenT">close</i>
       </li>
-      <router-link to="/formview"><li class="my-1">Iniciar Sesión</li></router-link>
-      <router-link to="/formview"><li class="my-1">Registrarse</li></router-link>
+      <router-link to="/formview"
+        ><li class="my-1">Iniciar Sesión</li></router-link
+      >
+      <router-link to="/formview"
+        ><li class="my-1">Registrarse</li></router-link
+      >
     </ul>
   </nav>
 </template>
+
 <script>
+import firebase from "firebase";
+import { userRoute, useRouter } from "vue-router";
+import router from "../router";
+
 export default {
   name: "HeaderP",
   data() {
     return {
       isActive: false,
+      isLogOut: Boolean,
     };
   },
   methods: {
     menuOpenT() {
       this.isActive = !this.isActive;
     },
+    loginOut() {
+      try {
+        firebase
+          .auth()
+          .signOut()
+          .then(() => router.replace("/"));
+        this.isLogOut = false;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  mounted() {
+    try {
+      const user = firebase.auth().currentUser;
+      if (!user) {
+        this.isLogOut = false;
+      } else {
+        this.isLogOut = true;
+      }
+    } catch (error) {}
   },
 };
 </script>

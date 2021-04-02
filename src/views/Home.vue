@@ -22,32 +22,20 @@
                 <h2 class="subtitle__basic my-4">
                   Postula y obtén un 10% de descuento en el programa
                 </h2>
-                <Input name="Nombre" for="name0" >
-                      <input 
-                      type="text" 
-                      id="name0"  
-                      required />
+                <Input name="Nombre" for="name0">
+                  <input type="text" id="name0" required />
                 </Input>
-                <Input name="Tefefono" for="telefono" >
-                      <input 
-                      type="text" 
-                      id="telefono"  
-                      required />
+                <Input name="Tefefono" for="telefono">
+                  <input type="text" id="telefono" required />
                 </Input>
-                 <Input name="Correo Electronico" for="correo0" >
-                      <input 
-                      type="text" 
-                      id="correo0"  
-                      required />
+                <Input name="Correo Electronico" for="correo0">
+                  <input type="text" id="correo0" required />
                 </Input>
-                <Input name="Programa" for="programa" >
-                      <input 
-                      type="text" 
-                      id="programa"  
-                      required />
+                <Input name="Programa" for="programa">
+                  <input type="text" id="programa" required />
                 </Input>
                 <div class="mb-5 flex items-center">
-                  <input type="checkbox" name="" id="" class="m-0"/>
+                  <input type="checkbox" name="" id="" class="m-0" />
                   <label for="" class="text__small ml-1 mt-1"
                     >Acepto las Políticas de privacidad.</label
                   >
@@ -76,12 +64,11 @@
         </h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3">
           <div class="col-span-2 sm:flex ">
-            <Card title="Desarrollo Front-End">
-              <img src="../assets/images/marketing_digital2.png" alt="" />
-            </Card>
-            <Card title="Desarrollo Front-End">
-              <img src="../assets/images/marketing_digital2.png" alt="" />
-            </Card>
+            <template v-for="(item, index) in listItems" :key="index">
+              <Card :title="item.tittle">
+                <img src="../assets/images/marketing_digital2.png" alt="" />
+              </Card>
+            </template>
           </div>
         </div>
       </div>
@@ -140,17 +127,45 @@ import Card from "../components/Card";
 import CardLine from "../components/CardLine";
 import Btn from "../components/Btn";
 import FooterP from "../components/FooterP";
-import Input from "@/components/Input.vue"
+import Input from "@/components/Input.vue";
+import firebase from "firebase";
+import { userRouter, userRoute } from "vue-router";
+import router from "../router";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Home",
+  data() {
+    return {};
+  },
   components: {
     HeaderP,
     Card,
     CardLine,
     Btn,
     FooterP,
-    Input
+    Input,
+  },
+  computed: {
+    ...mapState(["listItems"]),
+  },
+  methods: {
+    ...mapActions(["getDataFirebaseAction"]),
+  },
+  beforeCreate() {
+    try {
+      firebase.auth().onAuthStateChanged(function(user) {
+        console.dir(user);
+        if (user) {
+          router.replace("/");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  created() {
+    this.getDataFirebaseAction();
   },
 };
 </script>
@@ -218,5 +233,4 @@ export default {
     }
   }
 }
-
 </style>

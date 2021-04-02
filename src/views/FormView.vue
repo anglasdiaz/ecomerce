@@ -32,7 +32,6 @@
             <button
               @click="showFormLogin"
               class="h-full w-full btn-login text-xl font-extrabold"
-              autofocus
             >
               Iniciar Sesion
             </button>
@@ -56,6 +55,10 @@
 <script>
 import Login from "../components/Login";
 import Register from "../components/Register";
+import firebase from "firebase";
+import { userRouter, userRoute } from "vue-router";
+import router from "../router";
+
 export default {
   components: {
     Login,
@@ -65,8 +68,10 @@ export default {
     return {
       showRegister: false,
       showLogin: true,
+      router: userRoute,
     };
   },
+
   methods: {
     showFormLogin() {
       this.showRegister = false;

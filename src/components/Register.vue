@@ -1,34 +1,39 @@
 <template>
   <div class="h-4/6 w-3/4 flex justify-center">
     <form class="w-8/12 relative" @submit.prevent="creandoUsuario">
-       <Input name="Nombres y apellidos" for="name">
-            <input 
-            type="text" 
-            id="name"  
-            required 
-            v-model="formData.name"/>
-       </Input>
-      <Input name="Email" for="email1">
-            <input 
-            type="email" 
-            id="email1"  
-            required 
-            v-model="formData.email"/>
-       </Input>
-      <Input name="Contraseña" for="contarsena1">
-            <input 
-            type="password" 
-            id="contarsena1"  
-            required 
-            v-model="formData.password"/>
-       </Input>
-       <Input name="Repite contraseña" for="rpassword">
-            <input 
-            type="password" 
-            id="rpassword"  
-            required />
-       </Input>
-      <div class="flex items-center mt-3 relative" >
+      <div class="flex flex-col">
+        <label class="absolute left-2 px-1" for="name"
+          >Nombres y apellidos</label
+        >
+        <input class="max-w-md" type="text" id="name" required v-model="name" />
+      </div>
+      <div class="flex flex-col mt-3">
+        <label class="absolute left-2 px-1" for="email">Email</label>
+        <input
+          class="max-w-md"
+          type="email"
+          id="email"
+          required
+          v-model="email"
+        />
+      </div>
+      <div class="flex flex-col mt-3">
+        <label class="absolute left-2 px-1" for="password">Contrasenia</label>
+        <input
+          class="max-w-md"
+          type="password"
+          id="password"
+          required
+          v-model="password"
+        />
+      </div>
+      <div class="flex flex-col mt-3">
+        <label class="absolute left-2 px-1" for="rpassword"
+          >Repite contrasenia</label
+        >
+        <input class="max-w-md" type="password" id="rpassword" required />
+      </div>
+      <div class="flex items-center mt-3">
         <input class="max-w-md mb-0" type="checkbox" id="checkbox" required />
         <label class="px-1 " for="checkbox"
           >Acepto
@@ -50,28 +55,32 @@
 
 <script>
 import Btn from "../components/Btn";
-import { registerApi } from "../api/user";
-import router from "../router";
-import Input from "@/components/Input.vue"
+import firebase from "firebase";
 
 export default {
   components: {
     Btn,
-    Input
+    Input,
   },
   data() {
     return {
-      formData: {
-        name: "",
-        email: "",
-        password: "",
-      },
+      name: "",
+      email: "",
+      password: "",
     };
   },
   methods: {
-    creandoUsuario() {
-      console.log(this.formData);
-      router.push("/");
+    async creandoUsuario() {
+      try {
+        await firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .then((data) => console.log(data));
+        const user = await firebase.auth().currentUser;
+        user.displayName = this.name;
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
@@ -84,10 +93,9 @@ export default {
   color: #5640ff;
 }
 input {
-    border: 1px solid rgb(83, 83, 83);
-    margin-bottom: 8px;
-    border-radius: 5px;
-    width: 100%;
+  border: 1px solid rgb(83, 83, 83);
+  margin-bottom: 8px;
+  border-radius: 5px;
+  width: 100%;
 }
-
 </style>
