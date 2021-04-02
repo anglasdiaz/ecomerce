@@ -6,10 +6,10 @@
         <h3 class="mb-5 subtitle__secundary">{{ title }}</h3>
         <div class="flex justify-between">
           <button class="subtitle__third flex items-center">
-            <i class="large material-icons mr-1">add_circle_outline</i>Ver más
+            <i class="material-icons mr-1">add_circle_outline</i>Ver más
           </button>
           <button class="subtitle__third flex items-center">
-            <i class="large material-icons mr-1">add_shopping_cart</i>Agregar al
+            <i class="material-icons mr-1">add_shopping_cart</i>Agregar al
             carrito
           </button>
         </div>

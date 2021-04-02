@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import FormView from '../views/FormView.vue'
 import ShoppingCart from '../views/ShoppingCart.vue'
+import PayPage from '../views/PayPage.vue'
 
 const routes = [
   {
@@ -26,6 +27,11 @@ const routes = [
     path:'/formview',
     name:'Formview',
     component:FormView
+  },
+  {
+    path:'/paypage',
+    name:'PayPage',
+    component:PayPage
   }
 ]
 

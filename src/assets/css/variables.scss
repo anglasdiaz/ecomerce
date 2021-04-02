@@ -49,6 +49,11 @@ body{
         @include mediaQ(679px){
             font-size: 54px;
         }
+        &__2{
+            font-family: $font-poppins;
+        font-weight: 700;
+        font-size: 28px;
+        }
     }
     &__secundary{
         font-family: $font-poppins;

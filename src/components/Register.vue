@@ -2,9 +2,6 @@
   <div class="h-4/6 w-3/4 flex justify-center">
     <form class="w-8/12 relative" @submit.prevent="creandoUsuario">
       <div class="flex flex-col">
-        <label class="absolute left-2 px-1" for="name"
-          >Nombres y apellidos</label
-        >
         <input
           class="max-w-md"
           type="text"
@@ -12,9 +9,10 @@
           required
           v-model="formData.name"
         />
+        <label class="absolute left-2 px-1" for="name"
+          >Nombres y apellidos</label>
       </div>
-      <div class="flex flex-col mt-3">
-        <label class="absolute left-2 px-1" for="email">Email</label>
+      <div class="flex flex-col mt-3 relative">
         <input
           class="max-w-md"
           type="email"
@@ -22,9 +20,9 @@
           required
           v-model="formData.email"
         />
+        <label class="absolute left-2 px-1" for="email">Email</label>
       </div>
-      <div class="flex flex-col mt-3">
-        <label class="absolute left-2 px-1" for="password">Contrasenia</label>
+      <div class="flex flex-col mt-3 relative">
         <input
           class="max-w-md"
           type="password"
@@ -32,16 +30,17 @@
           required
           v-model="formData.password"
         />
+        <label class="absolute " for="password">Contrasenia</label>
       </div>
-      <div class="flex flex-col mt-3">
-        <label class="absolute left-2 px-1" for="rpassword"
+      <div class="flex flex-col mt-3 relative">
+        <input class="max-w-md" type="password" id="rpassword" required />
+        <label class="absolute " for="rpassword"
           >Repite contrasenia</label
         >
-        <input class="max-w-md" type="password" id="rpassword" required />
       </div>
       <div class="flex items-center mt-3">
         <input class="max-w-md mb-0" type="checkbox" id="checkbox" required />
-        <label class="px-1" for="checkbox"
+        <label class="px-1 " for="checkbox"
           >Acepto
           <span class="font-bold underline"
             >Terminos y Condiciones
@@ -49,7 +48,7 @@
         >
       </div>
 
-      <div class="mt-12 xl:mt-64">
+      <div class="mt-12 xl:mt-20">
         <Btn class="max-w-md" name="Ingresar" />
         <div class="flex justify-center mt-5 forgot-password">
           <router-link to="/">Olvidaste contrasenia?</router-link>
@@ -91,5 +90,18 @@ export default {
   text-decoration: underline;
   font-weight: bolder;
   color: #5640ff;
+}
+label{
+  top: 15px;
+  left: 16px;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease-in-out;
+  font-size:16px; 
+
+}
+input:focus + label{
+    color:#969696;
+    font-size: 12px;
+    transform: translate3d(0, -10px, 0);
 }
 </style>

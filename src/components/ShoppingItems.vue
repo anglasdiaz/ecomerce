@@ -2,28 +2,30 @@
   <div>
     <div>
       <div
-        class="flex p-2 bg-gray-200 mb-3 rounded-lg"
+        class="flex p-3 md:p-4 bg-gray-200 mb-3 rounded-lg"
         v-for="(cart, index) in shopCart"
         :key="index"
       >
-        <div class="w-60 h-46">
+        <div class="md:w-3/12 w-5/12">
           <img
-            class="w-full h-full rounded-md"
+            class=" rounded-md"
             :src="[cart.src]"
             alt="cart.img"
           />
         </div>
-        <div class="pl-3 flex-1 relative">
-          <p class="text-xl">{{ cart.courseName }}</p>
-          <p class="text-lg discount">Dsct {{ cart.discount }}%</p>
-          <button class="underline btn-eliminar focus:outline-none mt-20">
+        <div class="pl-3 flex-1 relative ">
+          <h4 class="md:text-xl mb-2 text-base">{{ cart.courseName }}</h4>
+          <p class="md:text-lg discount mb-8">Dsct {{ cart.discount }}%</p>
+          <div class="absolute bottom-0 right-0 lg:right-0 left-0 flex justify-between items-end px-3">
+            <button class="underline btn-eliminar focus:outline-none mt-3 lg:mt-30">
             Eliminar
           </button>
           <p
-            class="absolute bottom-0 right-0 lg:right-0 lg:top-0 font-bold text-lg"
+            class=" font-bold text-lg"
           >
             S/.{{ cart.price }}
           </p>
+          </div>
         </div>
       </div>
     </div>
@@ -49,4 +51,5 @@ export default {
 .discount {
   color: #5640ff;
 }
+
 </style>

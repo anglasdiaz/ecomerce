@@ -3,25 +3,26 @@
     <div class="header-background">
       <HeaderP> </HeaderP>
     </div>
-    <div class="lg:container lg:mx-auto w-full">
+    <div class="container  mx-auto px-4 md:px-0">
       <div
-        class="lg:flex lg:flex-row lg:items-start flex flex-col items-center"
-      >
+        class="lg:flex lg:flex-row lg:items-start flex flex-col items-center">
         <div class="lg:w-2/3 w-full">
-          <h1 class="text-2xl font-bold carrito-tittle mt-14 mb-8">
-            Carrito Compras
-          </h1>
+          <div class="flex items-center my-10">
+             <router-link to="/"><i class="material-icons mr-2">arrow_back</i></router-link>
+             <h2 class="subtitle__principal"> Desarrollo Front-End</h2>
+           </div>
           <ShoppingItems />
         </div>
-        <div class="lg:flex-1 w-full flex justify-center lg:justify-end mt-36 ">
-          <div class="coupon-container p-4 shadow-md lg:w-96 w-4/5 h-80">
+        <div class="lg:flex-1 w-full flex justify-center lg:justify-end mt-10 md:mt-36 ">
+          <div class="coupon-container p-4 shadow-md lg:w-96 w-full h-80">
             <div class="flex flex-col space-y-10">
               <div class="flex justify-between">
                 <h1 class="mt-5 subtotal text-lg font-bold">Subtotal</h1>
                 <p class="mt-5 price text-lg font-bold">S/.600</p>
               </div>
-              <div>
-                <input type="text" placeholder="Ingrese Cupon" />
+              <div class="flex flex-col mt-3 relative" >
+                <input type="text" class="max-w-md"/>
+                <label class="absolute " for="email">Ingrese Cupon</label>
               </div>
               <div>
                 <Btn name="Continuar" />
@@ -73,5 +74,18 @@ export default {
 .subtotal,
 .price {
   color: #5640ff;
+}
+label{
+  top: 15px;
+  left: 16px;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease-in-out;
+  font-size:16px; 
+
+}
+input:focus + label{
+    color:#969696;
+    font-size: 12px;
+    transform: translate3d(0, -10px, 0);
 }
 </style>

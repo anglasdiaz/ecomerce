@@ -36,12 +36,7 @@ export default {
 </script>
 <style lang="scss">
 @import "../assets/css/variables.scss";
-//mixins
-@mixin mediaQ($breakpoint) {
-  @media screen and (min-width: $breakpoint) {
-    @content;
-  }
-}
+
 .header {
   //background-color: #000;
   &__container {

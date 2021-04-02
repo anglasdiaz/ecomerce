@@ -3,8 +3,8 @@
     <div class="h-screen w-screen flex">
       <div class="hidden lg:block h-full w-4/6 relative">
         <div class="absolute top-1/2 right-20 tittle-forms">
-          <h1 class="text-5xl">!Explota todo tu potencial tecnologico!</h1>
-          <h3 class="mt-8 text-2xl">
+          <h1 class="text-5xl title__principal__2">!Explota todo tu potencial <br/> tecnologico!</h1>
+          <h3 class="mt-8 subtitle__basic">
             Con nuestros programas
             <br />
             de especializacion

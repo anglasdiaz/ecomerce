@@ -4,12 +4,12 @@
        <section class="py-10">
          <div class="container  mx-auto px-4 md:px-0">
            <div class="flex items-center mb-10">
-             <i class="material-icons mr-2">arrow_back</i>
+             <router-link to="/"><i class="material-icons mr-2">arrow_back</i></router-link>
              <h2 class="subtitle__principal"> Desarrollo Front-End</h2>
            </div>
            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
              <div>
-               <!-- <img src="../assets/images/curso.jpg" alt=""> -->
+               <img src="../assets/images/curso.jpg" alt="">
              </div>
              <div class="col-span-2 ">
                <article class="flex my-6">
