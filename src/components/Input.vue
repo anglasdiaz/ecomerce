@@ -1,7 +1,7 @@
 <template>
     <div class=" relative Input" >
          <slot></slot>
-         <label  :for='for'>{{name}}</label>
+         <label  :for="for">{{name}}</label>
     </div>
 </template>
 <script>

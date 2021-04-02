@@ -122,7 +122,11 @@
       </div>
     </section>
     <div class="icon-chat">
-      <a href="https://api.whatsapp.com/send?phone=+51959784623&text=%C2%BFC%C3%B3mo%20hago%20para%20inscribirme%20a%20un%20curso?" target="_blank"><img src="@/assets/images/icon-whatssap.png" alt="" /></a>
+      <a
+        target="_blanck"
+        href="https://api.whatsapp.com/send?phone=51954781495&amp;text=Hola!&nbsp;quiero&nbsp;informacion!"
+        ><img src="@/assets/images/icon-whatssap.png" alt=""
+      /></a>
     </div>
     <FooterP />
   </div>
