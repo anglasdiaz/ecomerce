@@ -22,13 +22,33 @@
                 <h2 class="subtitle__basic my-4">
                   Postula y obtén un 10% de descuento en el programa
                 </h2>
-                <input type="text" placeholder="Nombre" />
-                <input type="text" placeholder="Tefefono" />
-                <input type="email" placeholder="Correo Electronico" />
-                <input type="Text" placeholder="Programa" class="mb-3" />
-                <div class="mb-5">
-                  <input type="checkbox" name="" id="" />
-                  <label for="" class="text__small"
+                <Input name="Nombre" for="name0" >
+                      <input 
+                      type="text" 
+                      id="name0"  
+                      required />
+                </Input>
+                <Input name="Tefefono" for="telefono" >
+                      <input 
+                      type="text" 
+                      id="telefono"  
+                      required />
+                </Input>
+                 <Input name="Correo Electronico" for="correo0" >
+                      <input 
+                      type="text" 
+                      id="correo0"  
+                      required />
+                </Input>
+                <Input name="Programa" for="programa" >
+                      <input 
+                      type="text" 
+                      id="programa"  
+                      required />
+                </Input>
+                <div class="mb-5 flex items-center">
+                  <input type="checkbox" name="" id="" class="m-0"/>
+                  <label for="" class="text__small ml-1 mt-1"
                     >Acepto las Políticas de privacidad.</label
                   >
                 </div>
@@ -116,6 +136,7 @@ import Card from "../components/Card";
 import CardLine from "../components/CardLine";
 import Btn from "../components/Btn";
 import FooterP from "../components/FooterP";
+import Input from "@/components/Input.vue"
 
 export default {
   name: "Home",
@@ -125,6 +146,7 @@ export default {
     CardLine,
     Btn,
     FooterP,
+    Input
   },
 };
 </script>
@@ -192,4 +214,5 @@ export default {
     }
   }
 }
+
 </style>

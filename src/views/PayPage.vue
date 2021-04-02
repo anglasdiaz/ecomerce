@@ -7,16 +7,20 @@
              <router-link to="/"><i class="material-icons mr-2">arrow_back</i></router-link>
              <h2 class="subtitle__principal"> Pasarela de pagos</h2>
            </div>
-           <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
+           <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-5">
              <div class="col-span-3 ">
-              
+              <h3 class="title__principal__2 mb-8">PayPal </h3>
+              <article>
+                <img src="../assets/images/paypal-logo.png" alt="">
+                <p class="pt-5 pb-8">Tus compras y pagos ahora son más  rápidos que nunca, <br/> e igual de seguros que siempre. </p>
+                <Btn class="max-w-md" name="Pagar" />
+              </article>
              </div>
-             <div class="col-span-2 block">
+             <div class="col-span-3 block">
                 <ShoppingItems />
-                <div class="flex flex-col my-6 relative" >
-                    <input type="text" class="max-w-md" required/>
-                    <label class="absolute " for="email">Agregue un código de descuento</label>
-                </div>
+                <Input name="Agregue un código de descuento" for='descuento'>
+                  <input type="text" id="descuento"  required/>
+                </Input>
                 <Btn name="Continuar" />
                 <div class="precioFinal flex justify-between items-center">
                     <h3 class="title__principal__2">Precio final</h3>
@@ -31,12 +35,16 @@
 <script>
 import HeaderP from '@/components/HeaderP.vue';
 import ShoppingItems from "../components/ShoppingItems.vue";
+import Input from "@/components/Input.vue";
+import Btn from '@/components/Btn.vue'
 
 export default {
   name: 'PayPage',
   components: {
     HeaderP,
-    ShoppingItems
+    ShoppingItems,
+    Input,
+    Btn
     }
 }
 </script>
@@ -50,26 +58,7 @@ export default {
     .cardLine{
         background-color:#fff;
     }
-    label{
-    top: 15px;
-    left: 16px;
-    transform: translate3d(0, 0, 0);
-    transition: all 0.2s ease-in-out;
-    font-size:16px; 
-
-    }
-    input{
-    &[data-empty="false"] {
-        pointer-events:none;
-    }
-    &[data-empty="false"] + label,
-    &:valid + label,
-    &:focus + label{
-        color:#969696;
-        font-size: 12px;
-        transform: translate3d(0, -10px, 0);
-    }
-    }
+   
     .precioFinal{
         color: $color-principal;
         padding-top: 2em;

@@ -1,44 +1,34 @@
 <template>
   <div class="h-4/6 w-3/4 flex justify-center">
     <form class="w-8/12 relative" @submit.prevent="creandoUsuario">
-      <div class="flex flex-col">
-        <input
-          class="max-w-md"
-          type="text"
-          id="name"
-          required
-          v-model="formData.name"
-        />
-        <label class="absolute left-2 px-1" for="name"
-          >Nombres y apellidos</label>
-      </div>
-      <div class="flex flex-col mt-3 relative">
-        <input
-          class="max-w-md"
-          type="email"
-          id="email"
-          required
-          v-model="formData.email"
-        />
-        <label class="absolute left-2 px-1" for="email">Email</label>
-      </div>
-      <div class="flex flex-col mt-3 relative">
-        <input
-          class="max-w-md"
-          type="password"
-          id="password"
-          required
-          v-model="formData.password"
-        />
-        <label class="absolute " for="password">Contrasenia</label>
-      </div>
-      <div class="flex flex-col mt-3 relative">
-        <input class="max-w-md" type="password" id="rpassword" required />
-        <label class="absolute " for="rpassword"
-          >Repite contrasenia</label
-        >
-      </div>
-      <div class="flex items-center mt-3">
+       <Input name="Nombres y apellidos" for="name">
+            <input 
+            type="text" 
+            id="name"  
+            required 
+            v-model="formData.name"/>
+       </Input>
+      <Input name="Email" for="email1">
+            <input 
+            type="email" 
+            id="email1"  
+            required 
+            v-model="formData.email"/>
+       </Input>
+      <Input name="Contraseña" for="contarsena1">
+            <input 
+            type="password" 
+            id="contarsena1"  
+            required 
+            v-model="formData.password"/>
+       </Input>
+       <Input name="Repite contraseña" for="rpassword">
+            <input 
+            type="password" 
+            id="rpassword"  
+            required />
+       </Input>
+      <div class="flex items-center mt-3 relative" >
         <input class="max-w-md mb-0" type="checkbox" id="checkbox" required />
         <label class="px-1 " for="checkbox"
           >Acepto
@@ -62,10 +52,12 @@
 import Btn from "../components/Btn";
 import { registerApi } from "../api/user";
 import router from "../router";
+import Input from "@/components/Input.vue"
 
 export default {
   components: {
     Btn,
+    Input
   },
   data() {
     return {
@@ -91,17 +83,11 @@ export default {
   font-weight: bolder;
   color: #5640ff;
 }
-label{
-  top: 15px;
-  left: 16px;
-  transform: translate3d(0, 0, 0);
-  transition: all 0.2s ease-in-out;
-  font-size:16px; 
+input {
+    border: 1px solid rgb(83, 83, 83);
+    margin-bottom: 8px;
+    border-radius: 5px;
+    width: 100%;
+}
 
-}
-input:focus + label{
-    color:#969696;
-    font-size: 12px;
-    transform: translate3d(0, -10px, 0);
-}
 </style>

@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import FormView from '../views/FormView.vue'
 import ShoppingCart from '../views/ShoppingCart.vue'
 import PayPage from '../views/PayPage.vue'
+import DetailBuy from '../views/DetailBuy.vue'
 
 const routes = [
   {
@@ -21,7 +22,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/curso.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Curso.vue')
   },
   {
     path:'/formview',
@@ -32,6 +33,12 @@ const routes = [
     path:'/paypage',
     name:'PayPage',
     component:PayPage
+  }
+  ,
+  {
+    path:'/detailBuy',
+    name:'DetailBuy',
+    component:DetailBuy
   }
 ]
 

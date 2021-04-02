@@ -20,10 +20,9 @@
                 <h1 class="mt-5 subtotal text-lg font-bold">Subtotal</h1>
                 <p class="mt-5 price text-lg font-bold">S/.600</p>
               </div>
-              <div class="flex flex-col mt-3 relative" >
-                <input type="text" class="max-w-md"/>
-                <label class="absolute " for="email">Ingrese Cupon</label>
-              </div>
+              <Input name="Ingrese Cupon" for="email">
+                  <input type="email" id="email"  required/>
+              </Input>
               <div>
                 <Btn name="Continuar" />
               </div>
@@ -41,12 +40,15 @@ import CardLine from "../components/CardLine";
 import HeaderP from "../components/HeaderP";
 import ShoppingItems from "../components/ShoppingItems.vue";
 import Btn from "../components/Btn";
+import Input from "@/components/Input.vue";
+
 export default {
   components: {
     HeaderP,
     ShoppingItems,
     CardLine,
     Btn,
+    Input
   },
   data() {
     return {};
@@ -75,17 +77,5 @@ export default {
 .price {
   color: #5640ff;
 }
-label{
-  top: 15px;
-  left: 16px;
-  transform: translate3d(0, 0, 0);
-  transition: all 0.2s ease-in-out;
-  font-size:16px; 
 
-}
-input:focus + label{
-    color:#969696;
-    font-size: 12px;
-    transform: translate3d(0, -10px, 0);
-}
 </style>
