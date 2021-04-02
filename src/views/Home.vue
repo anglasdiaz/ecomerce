@@ -56,12 +56,11 @@
         </h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3">
           <div class="col-span-2 sm:flex ">
-            <Card title="Desarrollo Front-End">
-              <img src="../assets/images/marketing_digital2.png" alt="" />
-            </Card>
-            <Card title="Desarrollo Front-End">
-              <img src="../assets/images/marketing_digital2.png" alt="" />
-            </Card>
+            <template v-for="(item, index) in listItems" :key="index">
+              <Card :title="item.tittle">
+                <img src="../assets/images/marketing_digital2.png" alt="" />
+              </Card>
+            </template>
           </div>
         </div>
       </div>
@@ -120,15 +119,43 @@ import Card from "../components/Card";
 import CardLine from "../components/CardLine";
 import Btn from "../components/Btn";
 import FooterP from "../components/FooterP";
+import firebase from "firebase";
+import { userRouter, userRoute } from "vue-router";
+import router from "../router";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Home",
+  data() {
+    return {};
+  },
   components: {
     HeaderP,
     Card,
     CardLine,
     Btn,
     FooterP,
+  },
+  computed: {
+    ...mapState(["listItems"]),
+  },
+  methods: {
+    ...mapActions(["getDataFirebaseAction"]),
+  },
+  beforeCreate() {
+    try {
+      firebase.auth().onAuthStateChanged(function(user) {
+        console.dir(user);
+        if (user) {
+          router.replace("/");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  created() {
+    this.getDataFirebaseAction();
   },
 };
 </script>

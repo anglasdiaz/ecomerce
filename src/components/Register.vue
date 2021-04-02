@@ -5,13 +5,7 @@
         <label class="absolute left-2 px-1" for="name"
           >Nombres y apellidos</label
         >
-        <input
-          class="max-w-md"
-          type="text"
-          id="name"
-          required
-          v-model="formData.name"
-        />
+        <input class="max-w-md" type="text" id="name" required v-model="name" />
       </div>
       <div class="flex flex-col mt-3">
         <label class="absolute left-2 px-1" for="email">Email</label>
@@ -20,7 +14,7 @@
           type="email"
           id="email"
           required
-          v-model="formData.email"
+          v-model="email"
         />
       </div>
       <div class="flex flex-col mt-3">
@@ -30,7 +24,7 @@
           type="password"
           id="password"
           required
-          v-model="formData.password"
+          v-model="password"
         />
       </div>
       <div class="flex flex-col mt-3">
@@ -61,8 +55,7 @@
 
 <script>
 import Btn from "../components/Btn";
-import { registerApi } from "../api/user";
-import router from "../router";
+import firebase from "firebase";
 
 export default {
   components: {
@@ -70,17 +63,23 @@ export default {
   },
   data() {
     return {
-      formData: {
-        name: "",
-        email: "",
-        password: "",
-      },
+      name: "",
+      email: "",
+      password: "",
     };
   },
   methods: {
-    creandoUsuario() {
-      console.log(this.formData);
-      router.push("/");
+    async creandoUsuario() {
+      try {
+        await firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .then((data) => console.log(data));
+        const user = await firebase.auth().currentUser;
+        user.displayName = this.name;
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
