@@ -2,11 +2,10 @@
   <nav class="header">
     <div class="container mx-auto ">
       <div class="flex header__container justify-between">
-        <img src="../assets/images/logo-pachaqtec.png" alt="" />
+        <router-link to="/"><img src="../assets/images/logo-pachaqtec.png" alt="" /></router-link>
         <div class="header__item">
           <i class="material-icons hidden lg:inline-block mx-3"
-            >shopping_cart</i
-          >
+            >shopping_cart</i>
           <i @click="menuOpenT" class="material-icons">menu</i>
         </div>
       </div>
@@ -15,8 +14,8 @@
       <li class="flex justify-end">
         <i class="material-icons " @click="menuOpenT">close</i>
       </li>
-      <li class="my-1">Iniciar Sesión</li>
-      <li class="my-1">Registrarse</li>
+      <router-link to="/formview"><li class="my-1">Iniciar Sesión</li></router-link>
+      <router-link to="/formview"><li class="my-1">Registrarse</li></router-link>
     </ul>
   </nav>
 </template>
