@@ -25,7 +25,7 @@
             </Input> -->
             <div class="precioFinal flex justify-between items-center">
               <h3 class="title__principal__2">Precio final</h3>
-              <h3 class="title__principal__2">S/ {{ totalPrice }}.00</h3>
+              <h3 class="title__principal__2">S/ {{ total }}.00</h3>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@ import Btn from "@/components/Btn.vue";
 import firebase from "firebase";
 import { userRouter, userRoute } from "vue-router";
 import router from "../router";
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default {
   name: "PayPage",
@@ -66,6 +66,7 @@ export default {
     Btn,
   },
   computed: {
+    ...mapState(["total"]),
     ...mapGetters(["totalPrice"]),
   },
   mounted() {

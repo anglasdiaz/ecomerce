@@ -27,7 +27,6 @@
             <!-- <Input name="Agregue un código de descuento" for="descuento">
               <input type="text" id="descuento" required />
             </Input> -->
-            <Btn name="Continuar" />
             <div class="precioFinal flex justify-between items-center">
               <h3 class="title__principal__2">Precio final</h3>
               <h3 v-show="paidFor" class="title__principal__2">
@@ -108,8 +107,8 @@ export default {
           onApprove: (data, actions) => {
             return actions.order.capture().then((details) => {
               if (details.status === "COMPLETED") {
-                this.cleanCartAction();
                 router.replace("/detailBuy");
+                this.cleanCartAction();
               } else {
                 this.paidFor = true;
               }
