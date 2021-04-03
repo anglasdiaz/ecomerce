@@ -25,6 +25,9 @@ export default createStore({
     },
     removeItemCart(state,index){
       state.shopCart.splice(index,1)
+    },
+    cleanCart(state){
+      state.shopCart = []
     }
   },
   actions: {
@@ -57,6 +60,9 @@ export default createStore({
       },
       removeItemCartAction({commit},index){
         commit("removeItemCart", index)
+      },
+      cleanCartAction({commit}){
+        commit('cleanCart')
       }
       
   },

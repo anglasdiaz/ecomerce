@@ -16,16 +16,16 @@
           </div>
           <div class="col-span-3 block">
             <ShoppingItems />
-            <Input
+            <!-- <Input
               name="Agregue un código de descuento"
               for="descuento"
               class="mb-3"
             >
               <input type="text" id="descuento" required />
-            </Input>
+            </Input> -->
             <div class="precioFinal flex justify-between items-center">
               <h3 class="title__principal__2">Precio final</h3>
-              <h3 class="title__principal__2">S/ 600.00</h3>
+              <h3 class="title__principal__2">S/ {{ totalPrice }}.00</h3>
             </div>
           </div>
         </div>
@@ -55,6 +55,7 @@ import Btn from "@/components/Btn.vue";
 import firebase from "firebase";
 import { userRouter, userRoute } from "vue-router";
 import router from "../router";
+import { mapGetters } from "vuex";
 
 export default {
   name: "PayPage",
@@ -63,6 +64,9 @@ export default {
     ShoppingItems,
     Input,
     Btn,
+  },
+  computed: {
+    ...mapGetters(["totalPrice"]),
   },
   mounted() {
     const user = firebase.auth().currentUser;
