@@ -56,11 +56,11 @@
 <script>
 import Btn from "../components/Btn";
 import firebase from "firebase";
+import { mapState } from "vuex";
 
 export default {
   components: {
     Btn,
-    Input,
   },
   data() {
     return {
@@ -68,6 +68,9 @@ export default {
       email: "",
       password: "",
     };
+  },
+  computed: {
+    ...mapState(["postulante"]),
   },
   methods: {
     async creandoUsuario() {

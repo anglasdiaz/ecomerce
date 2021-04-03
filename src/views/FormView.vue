@@ -3,7 +3,10 @@
     <div class="h-screen w-screen flex">
       <div class="hidden lg:block h-full w-4/6 relative">
         <div class="absolute top-1/2 right-20 tittle-forms">
-          <h1 class="text-5xl title__principal__2">!Explota todo tu potencial <br/> tecnologico!</h1>
+          <h1 class="text-5xl title__principal__2">
+            !Explota todo tu potencial <br />
+            tecnologico!
+          </h1>
           <h3 class="mt-8 subtitle__basic">
             Con nuestros programas
             <br />
@@ -40,6 +43,7 @@
             <button
               @click="showFormRegister"
               class="h-full w-full btn-register text-xl font-extrabold"
+              autofocus
             >
               Registrarse
             </button>
@@ -66,8 +70,8 @@ export default {
   },
   data() {
     return {
-      showRegister: false,
-      showLogin: true,
+      showRegister: true,
+      showLogin: false,
       router: userRoute,
     };
   },

@@ -52,6 +52,9 @@ import HeaderP from "@/components/HeaderP.vue";
 import ShoppingItems from "../components/ShoppingItems.vue";
 import Input from "@/components/Input.vue";
 import Btn from "@/components/Btn.vue";
+import firebase from "firebase";
+import { userRouter, userRoute } from "vue-router";
+import router from "../router";
 
 export default {
   name: "PayPage",
@@ -60,6 +63,12 @@ export default {
     ShoppingItems,
     Input,
     Btn,
+  },
+  mounted() {
+    const user = firebase.auth().currentUser;
+    if (!user) {
+      router.replace("/");
+    }
   },
 };
 </script>

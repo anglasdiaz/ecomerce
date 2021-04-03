@@ -5,26 +5,35 @@
     </div>
     <div class="container  mx-auto px-4 md:px-0">
       <div
-        class="lg:flex lg:flex-row lg:items-start flex flex-col items-center">
+        class="lg:flex lg:flex-row lg:items-start flex flex-col items-center"
+      >
         <div class="lg:w-2/3 w-full">
           <div class="flex items-center my-10">
-             <router-link to="/"><i class="material-icons mr-2">arrow_back</i></router-link>
-             <h2 class="subtitle__principal"> Desarrollo Front-End</h2>
-           </div>
+            <router-link to="/"
+              ><i class="material-icons mr-2">arrow_back</i></router-link
+            >
+            <h2 class="subtitle__principal">Desarrollo Front-End</h2>
+          </div>
           <ShoppingItems />
         </div>
-        <div class="lg:flex-1 w-full flex justify-center lg:justify-end mt-10 md:mt-36 ">
+        <div
+          class="lg:flex-1 w-full flex justify-center lg:justify-end mt-10 md:mt-36 "
+        >
           <div class="coupon-container p-4 shadow-md lg:w-96 w-full h-80">
             <div class="flex flex-col space-y-10">
               <div class="flex justify-between">
                 <h1 class="mt-5 subtotal text-lg font-bold">Subtotal</h1>
-                <p class="mt-5 price text-lg font-bold">S/.600</p>
+                <p class="mt-5 price text-lg font-bold">
+                  S/.{{ totalPrice() }}
+                </p>
               </div>
               <Input name="Ingrese Cupon" for="email">
-                  <input type="email" id="email"  required/>
+                <input type="email" id="email" required />
               </Input>
               <div>
-                <Btn name="Continuar" />
+                <router-link to="/paypage">
+                  <Btn name="Continuar" />
+                </router-link>
               </div>
             </div>
           </div>
@@ -35,12 +44,15 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import CardLine from "../components/CardLine";
 import HeaderP from "../components/HeaderP";
 import ShoppingItems from "../components/ShoppingItems.vue";
 import Btn from "../components/Btn";
 import Input from "@/components/Input.vue";
+import firebase from "firebase";
+import { userRouter, userRoute } from "vue-router";
+import router from "../router";
 
 export default {
   components: {
@@ -48,13 +60,28 @@ export default {
     ShoppingItems,
     CardLine,
     Btn,
-    Input
+    Input,
   },
   data() {
     return {};
   },
   computed: {
     ...mapState(["shopCart"]),
+  },
+  methods: {
+    ...mapGetters(["totalPrice"]),
+    // totalToPay() {
+    //   const total = this.shopCart.reduce(
+    //     (accumulator, currentValue) => accumulator.price + currentValue.price
+    //   );
+    //   console.log(total);
+    // },
+  },
+  mounted() {
+    const user = firebase.auth().currentUser;
+    if (!user) {
+      router.replace("/");
+    }
   },
 };
 </script>
@@ -77,5 +104,4 @@ export default {
 .price {
   color: #5640ff;
 }
-
 </style>

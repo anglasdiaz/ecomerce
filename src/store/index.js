@@ -1,33 +1,30 @@
 import { createStore } from 'vuex'
 import firebase from 'firebase';
 import {db} from '../main'
+import { customRef } from '@vue/reactivity';
 
 export default createStore({
   state: {
     listItems:[],
-    shopCart:[
-    {
-      src:'https://analyticsinsight.b-cdn.net/wp-content/uploads/2020/01/online-course-main-800x549.png',
-      courseName:'Gestion de envases, envases y embalajes',
-      price:250,
-      discount:25
-    },
-    {
-      src:'https://analyticsinsight.b-cdn.net/wp-content/uploads/2020/01/online-course-main-800x549.png',
-      courseName:'Gestion de envases, envases y embalajes',
-      price:250,
-      discount:25
-    },
-    {
-      src:'https://analyticsinsight.b-cdn.net/wp-content/uploads/2020/01/online-course-main-800x549.png',
-      courseName:'Gestion de envases, envases y embalajes',
-      price:250,
-      discount:25
-    }]
+    postulante:{},
+    shopCart:[],
+    total:'',
   },
   mutations: {
     getDataFirebase(state,newData){
       state.listItems = newData;
+    },
+    setDataPostulante(state,dataPostulante){
+      state.postulante = dataPostulante;
+    },
+    // setDataShopCart(state,dataShopCart){
+    //   state.shopCart.push(dataShopCart);
+    // },
+    addItemCart(state,item){
+      state.shopCart.push(item)
+    },
+    removeItemCart(state,index){
+      state.shopCart.splice(index,1)
     }
   },
   actions: {
@@ -38,10 +35,38 @@ export default createStore({
         arrdata.push(result.data())
       })
       commit('getDataFirebase', arrdata)
-     }
+     },
+      setDataPostulanteAction({commit},dataPostulante){
+        dataPostulante={
+          name:dataPostulante.name,
+          email:dataPostulante.email,
+          telefono:dataPostulante.telefono,
+          program:dataPostulante.programa,
+        }
+        commit('setDataPostulante',dataPostulante);
+      },
+      setDataShopCartAction({commit},dataShopCart){
+        dataShopCart={
+          courseName:dataShopCart.name,
+          price:dataShopCart.price,
+        }
+        commit('setDataShopCart',dataShopCart);
+      },
+      addItemCartAction({commit}, item){
+        commit("addItemCart",item)
+      },
+      removeItemCartAction({commit},index){
+        commit("removeItemCart", index)
+      }
       
-    
+  },
+  getters:{
+    totalPrice(state){
+      return state.total= state.shopCart.reduce(function (prev,cur){
+        return prev + cur.price;
+      },0);
+    }
   },
   modules: {
-  }
+  },
 })

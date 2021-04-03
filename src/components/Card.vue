@@ -6,9 +6,15 @@
         <h3 class="mb-5 subtitle__secundary">{{ title }}</h3>
         <div class="flex justify-between">
           <button class="subtitle__third flex items-center">
-            <i class="material-icons mr-1">add_circle_outline</i>Ver más
+            <router-link :to="`/curso/${cursoindex}`">
+              <i class="material-icons mr-1">add_circle_outline</i>Ver más
+            </router-link>
           </button>
-          <button class="subtitle__third flex items-center">
+          <button
+            @click="getItem(cursoindex)"
+            class="subtitle__third flex items-center"
+            :class="{ disabled: isHere }"
+          >
             <i class="material-icons mr-1">add_shopping_cart</i>Agregar al
             carrito
           </button>
@@ -19,18 +25,32 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   name: "Card",
   props: {
     title: String,
+    cursoindex: Number,
     img: String,
   },
   data() {
     return {
       imgCurso: "",
+      isHere: Boolean,
     };
   },
-  methods: {},
+  computed: {
+    ...mapState(["listItems", "shopCart"]),
+  },
+  methods: {
+    ...mapActions(["addItemCartAction"]),
+    getItem(idx) {
+      this.isHere = this.shopCart.includes(this.listItems[idx]);
+      if (!this.isHere) {
+        this.addItemCartAction(this.listItems[idx]);
+      }
+    },
+  },
 };
 </script>
 <style lang="scss">

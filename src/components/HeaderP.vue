@@ -5,10 +5,13 @@
         <router-link to="/"
           ><img src="../assets/images/logo-pachaqtec.png" alt=""
         /></router-link>
-        <div class="header__item">
-          <i class="material-icons hidden lg:inline-block mx-3"
-            >shopping_cart</i
-          >
+        <div class="header__item relative">
+          <span class="absolute">{{ this.shopCart.length }}</span>
+          <router-link to="/shoppingcart">
+            <i class="material-icons hidden lg:inline-block mx-3"
+              >shopping_cart</i
+            >
+          </router-link>
           <i
             v-show="isLogOut"
             @click="loginOut"
@@ -37,6 +40,7 @@
 import firebase from "firebase";
 import { userRoute, useRouter } from "vue-router";
 import router from "../router";
+import { mapState } from "vuex";
 
 export default {
   name: "HeaderP",
@@ -45,6 +49,9 @@ export default {
       isActive: false,
       isLogOut: Boolean,
     };
+  },
+  computed: {
+    ...mapState(["shopCart"]),
   },
   methods: {
     menuOpenT() {
@@ -89,6 +96,9 @@ export default {
   }
   &__item {
     color: #fff;
+  }
+  &__count {
+    color: black;
   }
 }
 .menu {

@@ -18,21 +18,41 @@
               </div>
             </div>
             <div class="banner__img">
-              <form>
+              <form @submit.prevent="getDataPostulante">
                 <h2 class="subtitle__basic my-4">
                   Postula y obtén un 10% de descuento en el programa
                 </h2>
                 <Input name="Nombre" for="name0">
-                  <input type="text" id="name0" required />
+                  <input
+                    type="text"
+                    id="name0"
+                    required
+                    v-model="dataPostulante.name"
+                  />
                 </Input>
                 <Input name="Tefefono" for="telefono">
-                  <input type="text" id="telefono" required />
+                  <input
+                    type="text"
+                    id="telefono"
+                    required
+                    v-model="dataPostulante.telefono"
+                  />
                 </Input>
                 <Input name="Correo Electronico" for="correo0">
-                  <input type="text" id="correo0" required />
+                  <input
+                    type="text"
+                    id="correo0"
+                    required
+                    v-model="dataPostulante.email"
+                  />
                 </Input>
                 <Input name="Programa" for="programa">
-                  <input type="text" id="programa" required />
+                  <input
+                    type="text"
+                    id="programa"
+                    required
+                    v-model="dataPostulante.programa"
+                  />
                 </Input>
                 <div class="mb-5 flex items-center">
                   <input type="checkbox" name="" id="" class="m-0" />
@@ -65,7 +85,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3">
           <div class="col-span-2 sm:flex ">
             <template v-for="(item, index) in listItems" :key="index">
-              <Card :title="item.tittle">
+              <Card :title="item.tittle" :cursoindex="index">
                 <img src="../assets/images/marketing_digital2.png" alt="" />
               </Card>
             </template>
@@ -127,7 +147,7 @@ import Card from "../components/Card";
 import CardLine from "../components/CardLine";
 import Btn from "../components/Btn";
 import FooterP from "../components/FooterP";
-import Input from "@/components/Input.vue";
+import Input from "../components/Input";
 import firebase from "firebase";
 import { userRouter, userRoute } from "vue-router";
 import router from "../router";
@@ -136,7 +156,14 @@ import { mapState, mapActions } from "vuex";
 export default {
   name: "Home",
   data() {
-    return {};
+    return {
+      dataPostulante: {
+        nam: "",
+        email: "",
+        telefono: "",
+        programa: "",
+      },
+    };
   },
   components: {
     HeaderP,
@@ -150,7 +177,15 @@ export default {
     ...mapState(["listItems"]),
   },
   methods: {
-    ...mapActions(["getDataFirebaseAction"]),
+    ...mapActions([
+      "getDataFirebaseAction",
+      "setDataPostulanteAction",
+      "setDataShopCartAction",
+    ]),
+    getDataPostulante() {
+      this.setDataPostulanteAction(this.dataPostulante);
+      router.replace("/formview");
+    },
   },
   beforeCreate() {
     try {
