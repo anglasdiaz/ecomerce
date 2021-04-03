@@ -1,26 +1,22 @@
 <template>
   <div class="h-4/6 w-3/4 flex justify-center">
     <form class="w-8/12 relative" @submit.prevent="logIn">
-      <div class="flex flex-col">
-        <label class="absolute left-2 px-1" for="email">Email</label>
-        <input
-          class="max-w-md"
-          type="email"
-          id="email"
-          v-model="email"
-          required
-        />
-      </div>
-      <div class="flex flex-col mt-3">
-        <label class="absolute left-2 px-1" for="password">Password</label>
-        <input
-          class="max-w-md"
-          type="password"
-          id="password"
-          v-model="password"
-          required
-        />
-      </div>
+      <Input name="Email" tipo="email1">
+          <input
+            type="email"
+            id="email1"
+            v-model="email"
+            required
+          />
+      </Input>
+      <Input name="Password" tipo="password1">
+          <input
+            type="password"
+            id="password1"
+            v-model="password"
+            required
+          />
+      </Input>
       <div class="mt-12 xl:mt-64">
         <Btn class="max-w-md" name="Ingresar" />
         <div class="flex justify-center mt-5 forgot-password">
@@ -35,6 +31,7 @@
 import Btn from "../components/Btn";
 import firebase from "firebase";
 import router from "../router";
+import Input from "../components/Input";
 export default {
   data() {
     return {
@@ -57,6 +54,7 @@ export default {
   },
   components: {
     Btn,
+    Input
   },
 };
 </script>

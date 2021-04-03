@@ -1,7 +1,7 @@
 <template>
   <div class=" relative Input">
     <slot></slot>
-    <label :for="for">{{ name }}</label>
+    <label :for="tipo">{{ name }}</label>
   </div>
 </template>
 <script>
@@ -9,7 +9,7 @@ export default {
   name: "Input",
   props: {
     name: String,
-    for: String,
+    tipo: String,
   },
   data() {
     return {};

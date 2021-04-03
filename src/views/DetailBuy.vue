@@ -18,7 +18,7 @@
             <ShoppingItems />
             <Input
               name="Agregue un código de descuento"
-              for="descuento"
+              tipo="descuento"
               class="mb-3"
             >
               <input type="text" id="descuento" required />
@@ -72,7 +72,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/css/variables.scss";
 .header-background {
   background: #000425;
