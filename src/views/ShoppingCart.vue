@@ -27,9 +27,9 @@
                   S/.{{ totalPrice() }}
                 </p>
               </div>
-              <Input name="Ingrese Cupon" tipo="email">
+              <!-- <Input name="Ingrese Cupon" tipo="email">
                 <input type="email" id="email" required />
-              </Input>
+              </Input> -->
               <div>
                 <router-link to="/paypage">
                   <Btn name="Continuar" />
