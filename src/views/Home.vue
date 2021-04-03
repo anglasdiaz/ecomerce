@@ -22,7 +22,7 @@
                 <h2 class="subtitle__basic my-4">
                   Postula y obtén un 10% de descuento en el programa
                 </h2>
-                <Input name="Nombre" for="name0">
+                <Input name="Nombre" tipo="name0">
                   <input
                     type="text"
                     id="name0"
@@ -30,7 +30,7 @@
                     v-model="dataPostulante.name"
                   />
                 </Input>
-                <Input name="Tefefono" for="telefono">
+                <Input name="Tefefono" tipo="telefono">
                   <input
                     type="text"
                     id="telefono"
@@ -38,7 +38,7 @@
                     v-model="dataPostulante.telefono"
                   />
                 </Input>
-                <Input name="Correo Electronico" for="correo0">
+                <Input name="Correo Electronico" tipo="correo0">
                   <input
                     type="text"
                     id="correo0"
@@ -46,7 +46,7 @@
                     v-model="dataPostulante.email"
                   />
                 </Input>
-                <Input name="Programa" for="programa">
+                <Input name="Programa" tipo="programa">
                   <input
                     type="text"
                     id="programa"
@@ -83,7 +83,7 @@
           Conoce nuestros Programas de Especialización
         </h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3">
-          <div class="col-span-2 sm:flex ">
+          <div class="col-span-2 sm:flex flex-wrap">
             <template v-for="(item, index) in listItems" :key="index">
               <Card :title="item.tittle" :cursoindex="index">
                 <img src="../assets/images/marketing_digital2.png" alt="" />
@@ -118,11 +118,23 @@
       <div class="container mx-auto px-4 md:px-0">
         <h3 class="subtitle__principal mb-5">Beneficios</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3">
-          <div class="col-span-2 md:flex ">
+          <div class="col-span-2 ">
             <CardLine
               icon="person_outline"
               title="Aprende de Expertos"
               text="Aprende directamente de expertos del mercado a través del análisis y solución de problemas de programación. Utilizando los frameworks y herramientas de mayor relevancia dentro del mundo del coding."
+            ></CardLine>
+             <CardLine
+              icon="laptop"
+              title="Clases Virtuales"
+              text="Aprovecha tu tiempo al máximo en nuestras clases virtuales y participa presencialmente de nuestras hackathones semanales para conocer y participar de la comunidad profesional que liderará la transformación tecnológica del Perú."
+            ></CardLine>
+             <CardLine
+              icon="card_travel"
+              title="Empleabilidad"
+              text="Al finalizar el programa y certificarte a nombre de IDAT, podrás acceder a ofertas 
+laborales especialmente identificadas para la comunidad PachaQTec, a través de 
+nuestra plataforma de empleabilidad IDAT JOB."
             ></CardLine>
           </div>
         </div>

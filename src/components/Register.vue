@@ -1,38 +1,37 @@
 <template>
   <div class="h-4/6 w-3/4 flex justify-center">
     <form class="w-8/12 relative" @submit.prevent="creandoUsuario">
-      <div class="flex flex-col">
-        <label class="absolute left-2 px-1" for="name"
-          >Nombres y apellidos</label
-        >
-        <input class="max-w-md" type="text" id="name" required v-model="name" />
-      </div>
-      <div class="flex flex-col mt-3">
-        <label class="absolute left-2 px-1" for="email">Email</label>
-        <input
-          class="max-w-md"
-          type="email"
-          id="email"
-          required
-          v-model="email"
-        />
-      </div>
-      <div class="flex flex-col mt-3">
-        <label class="absolute left-2 px-1" for="password">Contrasenia</label>
-        <input
-          class="max-w-md"
-          type="password"
-          id="password"
-          required
-          v-model="password"
-        />
-      </div>
-      <div class="flex flex-col mt-3">
-        <label class="absolute left-2 px-1" for="rpassword"
-          >Repite contrasenia</label
-        >
-        <input class="max-w-md" type="password" id="rpassword" required />
-      </div>
+      <Input name="Nombres y apellidos" tipo="name">
+          <input
+            type="text"
+            id="name"
+            v-model="name"
+            required
+          />
+      </Input>
+      <Input name="Email" tipo="email">
+          <input
+            type="email"
+            id="email"
+            v-model="email"
+            required
+          />
+      </Input>
+      <Input name="Contraseña" tipo="password">
+          <input
+            type="password"
+            id="password"
+            v-model="password"
+            required
+          />
+      </Input>
+      <Input name="Contraseña" tipo="rpassword">
+          <input
+            type="password"
+            id="rpassword"
+            required
+          />
+      </Input>
       <div class="flex items-center mt-3">
         <input class="max-w-md mb-0" type="checkbox" id="checkbox" required />
         <label class="px-1 " for="checkbox"
@@ -57,10 +56,12 @@
 import Btn from "../components/Btn";
 import firebase from "firebase";
 import { mapState } from "vuex";
+import Input from "../components/Input";
 
 export default {
   components: {
     Btn,
+    Input
   },
   data() {
     return {

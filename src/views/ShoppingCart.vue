@@ -27,7 +27,7 @@
                   S/.{{ totalPrice() }}
                 </p>
               </div>
-              <Input name="Ingrese Cupon" for="email">
+              <Input name="Ingrese Cupon" tipo="email">
                 <input type="email" id="email" required />
               </Input>
               <div>

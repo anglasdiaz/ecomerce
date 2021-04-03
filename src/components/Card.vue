@@ -5,8 +5,8 @@
       <div class="card__content">
         <h3 class="mb-5 subtitle__secundary">{{ title }}</h3>
         <div class="flex justify-between">
-          <button class="subtitle__third flex items-center">
-            <router-link :to="`/curso/${cursoindex}`">
+          <button class="subtitle__third ">
+            <router-link :to="`/curso/${cursoindex}`" class="flex items-center">
               <i class="material-icons mr-1">add_circle_outline</i>Ver más
             </router-link>
           </button>

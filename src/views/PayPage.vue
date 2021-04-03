@@ -24,7 +24,7 @@
           </div>
           <div class="col-span-3 block">
             <ShoppingItems />
-            <!-- <Input name="Agregue un código de descuento" for="descuento">
+            <!-- <Input name="Agregue un código de descuento" tipo="descuento">
               <input type="text" id="descuento" required />
             </Input> -->
             <div class="precioFinal flex justify-between items-center">
@@ -122,7 +122,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/css/variables.scss";
 .block {
   padding: 2em;
