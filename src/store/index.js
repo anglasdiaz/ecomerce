@@ -9,6 +9,7 @@ export default createStore({
     postulante:{},
     shopCart:[],
     total:'',
+    facturaTotal:'',
   },
   mutations: {
     getDataFirebase(state,newData){
@@ -28,6 +29,9 @@ export default createStore({
     },
     cleanCart(state){
       state.shopCart = []
+    },
+    setFacturaTotal(state,total){
+      state.facturaTotal=total
     }
   },
   actions: {
@@ -63,6 +67,9 @@ export default createStore({
       },
       cleanCartAction({commit}){
         commit('cleanCart')
+      },
+      setFacturaTotalAction({commit},total){
+        commit('setFacturaTotal',total)
       }
       
   },

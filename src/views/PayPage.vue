@@ -70,6 +70,7 @@ export default {
   },
   created() {
     this.product.price = this.totalPrice;
+    this.setFacturaTotalAction(this.product.price);
   },
   mounted() {
     const user = firebase.auth().currentUser;
@@ -84,11 +85,12 @@ export default {
   },
   computed: {
     ...mapGetters(["totalPrice"]),
-    ...mapActions(["cleanCartAction"]),
   },
   methods: {
+    ...mapActions(["cleanCartAction", "setFacturaTotalAction"]),
     setLoaded: function() {
       this.loaded = true;
+
       window.paypal
         .Buttons({
           createOrder: (data, actions) => {

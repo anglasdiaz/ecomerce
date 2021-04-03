@@ -25,7 +25,7 @@
             </Input> -->
             <div class="precioFinal flex justify-between items-center">
               <h3 class="title__principal__2">Precio final</h3>
-              <h3 class="title__principal__2">S/ {{ total }}.00</h3>
+              <h3 class="title__principal__2">S/ {{ facturaTotal }}.00</h3>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ export default {
     Btn,
   },
   computed: {
-    ...mapState(["total"]),
+    ...mapState(["facturaTotal"]),
     ...mapGetters(["totalPrice"]),
   },
   mounted() {
