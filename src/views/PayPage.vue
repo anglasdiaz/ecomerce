@@ -18,17 +18,20 @@
                 Tus compras y pagos ahora son más rápidos que nunca, <br />
                 e igual de seguros que siempre.
               </p>
-              <Btn class="max-w-md" name="Pagar" />
+              <!-- <Btn class="max-w-md" name="Pagar" /> -->
+              <div ref="paypal"></div>
             </article>
           </div>
           <div class="col-span-3 block">
             <ShoppingItems />
-            <Input name="Agregue un código de descuento" tipo="descuento">
+            <!-- <Input name="Agregue un código de descuento" tipo="descuento">
               <input type="text" id="descuento" required />
-            </Input>
-            <Btn name="Continuar" />
+            </Input> -->
             <div class="precioFinal flex justify-between items-center">
               <h3 class="title__principal__2">Precio final</h3>
+              <h3 v-show="paidFor" class="title__principal__2">
+                Algo salio mal intentelo de nuevo
+              </h3>
               <h3 class="title__principal__2">S/ {{ totalPrice }}.00</h3>
             </div>
           </div>
@@ -45,13 +48,18 @@ import Btn from "@/components/Btn.vue";
 import { mapGetters } from "vuex";
 import firebase from "firebase";
 import { userRouter, userRoute } from "vue-router";
+import { mapActions } from "vuex";
 import router from "../router";
 
 export default {
   name: "PayPage",
   data() {
     return {
-      product: {},
+      loaded: false,
+      paidFor: false,
+      product: {
+        price: "",
+      },
     };
   },
   components: {
@@ -60,14 +68,55 @@ export default {
     Input,
     Btn,
   },
+  created() {
+    this.product.price = this.totalPrice;
+  },
   mounted() {
     const user = firebase.auth().currentUser;
     if (!user) {
       router.replace("/");
     }
+    const script = document.createElement("script");
+    script.src =
+      "https://www.paypal.com/sdk/js?client-id=ASU50hAQEgX8CLmIZIi_xDMQZLO9vQMMHDG-nd_OKy3CqlGFm71DCW4s81ABNv04V97rAT04WWsdxXJn&disable-funding=credit,card";
+    script.addEventListener("load", this.setLoaded);
+    document.body.appendChild(script);
   },
   computed: {
     ...mapGetters(["totalPrice"]),
+    ...mapActions(["cleanCartAction"]),
+  },
+  methods: {
+    setLoaded: function() {
+      this.loaded = true;
+      window.paypal
+        .Buttons({
+          createOrder: (data, actions) => {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  description: this.product.description,
+                  amount: {
+                    currency_code: "USD",
+                    value: this.product.price,
+                  },
+                },
+              ],
+            });
+          },
+          onApprove: (data, actions) => {
+            return actions.order.capture().then((details) => {
+              if (details.status === "COMPLETED") {
+                router.replace("/detailBuy");
+                this.cleanCartAction();
+              } else {
+                this.paidFor = true;
+              }
+            });
+          },
+        })
+        .render(this.$refs.paypal);
+    },
   },
 };
 </script>

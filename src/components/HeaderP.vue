@@ -47,16 +47,12 @@ export default {
   data() {
     return {
       isActive: false,
-      isLogOut: Boolean,
+      isLogOut: false,
     };
   },
   computed: {
     ...mapState(["shopCart"]),
-  },
-  methods: {
-    menuOpenT() {
-      this.isActive = !this.isActive;
-    },
+
     loginOut() {
       try {
         firebase
@@ -69,16 +65,25 @@ export default {
       }
     },
   },
-  mounted() {
-    try {
-      const user = firebase.auth().currentUser;
-      if (!user) {
-        this.isLogOut = false;
-      } else {
-        this.isLogOut = true;
+  methods: {
+    menuOpenT() {
+      this.isActive = !this.isActive;
+    },
+    async verify() {
+      try {
+        const user = await firebase.auth().currentUser;
+        if (user) {
+          this.isLogOut = true;
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {}
+    },
   },
+  async created() {
+    await this.verify();
+  },
+  mounted() {},
 };
 </script>
 <style lang="scss">
