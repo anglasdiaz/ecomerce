@@ -29,6 +29,7 @@ export default {
     font-size: 16px;
     cursor: text;
     width: 100%;
+    color: #8B9099;
   }
   input[type="text"],
   input[type="email"],

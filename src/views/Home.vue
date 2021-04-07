@@ -5,7 +5,7 @@
       <div class="banner__content mb-2">
         <div class="container mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-3">
-            <div class="col-span-2 ">
+            <div class="col-span-2 pt-20 mt-10">
               <div class="flex items-center banner__caption">
                 <div>
                   <h1 class="title__principal mb-5">
@@ -17,7 +17,8 @@
                 </div>
               </div>
             </div>
-            <div class="banner__img">
+            <div class="">
+              <div class="banner__img">
               <form @submit.prevent="getDataPostulante">
                 <h2 class="subtitle__basic my-4">
                   Postula y obtén un 10% de descuento en el programa
@@ -54,7 +55,7 @@
                     v-model="dataPostulante.programa"
                   />
                 </Input>
-                <div class="mb-5 flex items-center">
+                <div class="mb-9 flex items-center">
                   <input type="checkbox" name="" id="" class="m-0" />
                   <label for="" class="text__small ml-1 mt-1"
                     >Acepto las Políticas de privacidad.</label
@@ -63,21 +64,29 @@
                 <Btn name="Quiero Potular"></Btn>
               </form>
             </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
     <section class="py-10 fondo-color">
       <div class="container  mx-auto px-4 md:px-0">
-        <p class="text__small mb-2">Con el respaldo de:</p>
-        <div class="flex items-center">
-          <img class="mr-4" src="../assets/images/logo-intercorp.png" alt="" />
-          <img class="mr-4" src="../assets/images/logo-idat.png" alt="" />
-          <img class="mr-3" src="../assets/images/logo-zegel.png" alt="" />
-        </div>
+        <article class="grid md:grid-cols-2 lg:grid-cols-3">
+          <div>
+          <p class="text__small mb-2">Con el respaldo de:</p>
+          <div class="flex items-center">
+            <img class="mr-4" src="../assets/images/logo-intercorp.png" alt="" />
+            <img class="mr-4" src="../assets/images/logo-idat.png" alt="" />
+            <img class="mr-3" src="../assets/images/logo-zegel.png" alt="" />
+          </div>
+          </div>
+          <div class="flex justify-center items-center">
+            <img src="../assets/images/arrow-bottom.png" alt="">
+          </div>
+          </article>
       </div>
     </section>
-    <section class="py-20 fondo-color">
+    <section class="pt-12 pb-24 fondo-color">
       <div class="container mx-auto px-4 md:px-0">
         <h3 class="subtitle__principal mb-7">
           Conoce nuestros Programas de Especialización
@@ -117,7 +126,7 @@
     <section class="my-20">
       <div class="container mx-auto px-4 md:px-0">
         <h3 class="subtitle__principal mb-5">Beneficios</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div class="col-span-2 ">
             <CardLine
               icon="person_outline"
@@ -253,6 +262,8 @@ export default {
       display: block;
       padding: 3em 2em 3em 3.5em;
       height: 527px;
+      z-index: 9;
+      position: fixed;
     }
     img {
       margin-bottom: -11em;
@@ -266,7 +277,7 @@ export default {
   &__caption {
     padding: 18em 0em 3em 0em;
     @include mediaQ(640px) {
-      padding: 3em 5em 3em 12em;
+      padding: 4em 5em 4em 12em;
     }
   }
 

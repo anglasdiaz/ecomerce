@@ -89,11 +89,20 @@ body{
 }
 
 input {
-    border: 1px solid rgb(83, 83, 83);
-    margin-bottom: 8px;
+    border: 1px solid #8B9099;
+    margin-bottom: 9px;
     border-radius: 5px;
     width: 100%;
+    &:focus{
+        outline: #9a8dfd auto 1px;
+    }
 }
 input[type=checkbox]{
     width:initial;
+}
+
+@media (min-width: 1280px){
+    .container {
+        max-width: 1200px;
+    }
 }

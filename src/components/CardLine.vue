@@ -1,9 +1,9 @@
 <template>
   <article class="cardLine">
-    <div class="flex">
+    <div class="flex items-center">
       <i class="large material-icons mr-1 ">{{ icon }}</i>
       <article class="cardLine__caption">
-        <h3 class="subtitle__secundary mb-3">{{ title }}</h3>
+        <h3 class="subtitle__basic mb-3">{{ title }}</h3>
         <p class="cardLine__content">{{ text }}</p>
       </article>
     </div>
@@ -32,6 +32,9 @@ export default {
   padding: 3em;
   border-radius: 7px;
   margin-bottom: 1em;
+  @include mediaQ(796px) {
+      width: 90%;
+    }
   &__caption {
     width: 100%;
   }

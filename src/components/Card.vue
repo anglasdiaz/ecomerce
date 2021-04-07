@@ -61,10 +61,10 @@ export default {
   position: relative;
   overflow: hidden;
   border-radius: 7px;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   @include mediaQ(796px) {
     width: 40%;
-    margin-right: 4em;
+    margin-right: 2.5em;
   }
   @include mediaQ(1600px) {
     width: 35%;
