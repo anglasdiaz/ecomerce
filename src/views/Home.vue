@@ -5,7 +5,7 @@
       <div class="banner__content mb-2">
         <div class="container mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-3">
-            <div class="col-span-2 pt-20 mt-10">
+            <div class="col-span-2 md:pt-20 md:mt-10">
               <div class="flex items-center banner__caption">
                 <div>
                   <h1 class="title__principal mb-5">
@@ -33,7 +33,7 @@
                 </Input>
                 <Input name="Tefefono" tipo="telefono">
                   <input
-                    type="text"
+                    type="number"
                     id="telefono"
                     required
                     v-model="dataPostulante.telefono"
@@ -80,8 +80,8 @@
             <img class="mr-3" src="../assets/images/logo-zegel.png" alt="" />
           </div>
           </div>
-          <div class="flex justify-center items-center">
-            <img src="../assets/images/arrow-bottom.png" alt="">
+          <div class="md:flex justify-center items-center hidden ">
+            <a href="#beneficios"><img src="../assets/images/arrow-bottom.png" alt=""></a>
           </div>
           </article>
       </div>
@@ -123,7 +123,7 @@
         </div>
       </div>
     </section>
-    <section class="my-20">
+    <section id="beneficios" class="my-20">
       <div class="container mx-auto px-4 md:px-0">
         <h3 class="subtitle__principal mb-5">Beneficios</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -283,8 +283,9 @@ export default {
 
   img {
     position: absolute;
-    top: -6em;
-    left: 20%;
+    top: -7em;
+    left: 10%;
+    max-width: 70%;
     @include mediaQ(640px) {
       top: -5em;
       left: -5em;

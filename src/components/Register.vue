@@ -97,7 +97,7 @@ export default {
   color: #5640ff;
 }
 input {
-  border: 1px solid rgb(83, 83, 83);
+  border: 1px solid #8B9099;
   margin-bottom: 8px;
   border-radius: 5px;
   width: 100%;

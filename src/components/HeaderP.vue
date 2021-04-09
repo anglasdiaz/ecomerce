@@ -6,7 +6,7 @@
           ><img src="../assets/images/logo-pachaqtec.png" alt=""
         /></router-link>
         <div class="header__item relative">
-          <span class="absolute">{{ this.shopCart.length }}</span>
+          <span class="globo absolute">{{ this.shopCart.length }}</span>
           <router-link to="/shoppingcart">
             <i class="material-icons hidden lg:inline-block mx-3"
               >shopping_cart</i
@@ -26,12 +26,12 @@
       <li class="flex justify-end">
         <i class="material-icons " @click="menuOpenT">close</i>
       </li>
+      <router-link to="/"
+        ><li class="my-1">Inicio</li></router-link>
       <router-link to="/formview"
-        ><li class="my-1">Iniciar Sesión</li></router-link
-      >
+        ><li class="my-1">Iniciar Sesión</li></router-link>
       <router-link to="/formview"
-        ><li class="my-1">Registrarse</li></router-link
-      >
+        ><li class="my-1">Registrarse</li></router-link>
     </ul>
   </nav>
 </template>
@@ -125,5 +125,16 @@ export default {
 }
 .material-icons {
   cursor: pointer;
+}
+.globo{
+    top: -5px;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #5640FF;
+    left: 25px;
+    display: flex;
+    align-items: center;
 }
 </style>

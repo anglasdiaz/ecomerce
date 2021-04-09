@@ -20,6 +20,7 @@ export default {
 .Input {
   input[type="text"] + label,
   input[type="email"] + label,
+  input[type="number"] + label,
   input[type="password"] + label {
     position: absolute;
     top: 16px;
@@ -33,6 +34,7 @@ export default {
   }
   input[type="text"],
   input[type="email"],
+  input[type="number"],
   input[type="password"] {
     width: 100%;
     padding-left: 15px;
