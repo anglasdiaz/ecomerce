@@ -1,7 +1,7 @@
 <template>
   <div class=" relative Input">
     <slot></slot>
-    <label :for="tipo">{{ name }}</label>
+    <label :for="tipo" class="label">{{ name }}</label>
   </div>
 </template>
 <script>
@@ -18,10 +18,10 @@ export default {
 </script>
 <style lang="scss">
 .Input {
-  input[type="text"] + label,
-  input[type="email"] + label,
-  input[type="number"] + label,
-  input[type="password"] + label {
+  input[type="text"] ~ .label,
+  input[type="email"] ~ .label,
+  input[type="number"] ~ .label,
+  input[type="password"] ~ .label {
     position: absolute;
     top: 16px;
     left: 15px;
@@ -30,7 +30,7 @@ export default {
     font-size: 16px;
     cursor: text;
     width: 100%;
-    color: #8B9099;
+    //color: #8B9099;
   }
   input[type="text"],
   input[type="email"],

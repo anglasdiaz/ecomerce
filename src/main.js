@@ -6,6 +6,7 @@ import store from './store'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import SimpleVueValidation from 'simple-vue-validator';
 
  // Your web app's Firebase configuration
  var firebaseConfig = {
@@ -21,4 +22,4 @@ import 'firebase/firestore';
 
   export const db = firebase.firestore();
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App).use(store).use(router).use(SimpleVueValidation).mount('#app')

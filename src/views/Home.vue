@@ -173,13 +173,18 @@ import firebase from "firebase";
 import { userRouter, userRoute } from "vue-router";
 import router from "../router";
 import { mapState, mapActions } from "vuex";
+// import SimpleVueValidation from 'simple-vue-validator';
+// const Validator = SimpleVueValidation.Validator.create({templates: {
+//     url: 'That doesn\'t look like a valid url.'
+//   }});
 
 export default {
   name: "Home",
   data() {
     return {
+      //name:'',
       dataPostulante: {
-        nam: "",
+        name: "",
         email: "",
         telefono: "",
         programa: "",
@@ -197,7 +202,30 @@ export default {
   computed: {
     ...mapState(["listItems"]),
   },
+  // validators: {
+      
+  //     name: function(value) {
+  //       return Validator.value(value).required().url();
+  //     },
+  //     gender: function(value) {
+  //       return Validator.value(value).required();
+  //     },
+  //     phone: function(value) {
+  //       return Validator.value(value).digit().length(10);
+  //     },
+  //     age: function(value) {
+  //       return Validator.value(value).integer().greaterThan(12);
+  //     }
+    // },
   methods: {
+    // submit: function() {
+    //     this.$validate()
+    //       .then(function(success) {
+    //         if (success) {
+    //           alert('Validation succeeded!')
+    //         }
+    //       });
+    //   },
     ...mapActions([
       "getDataFirebaseAction",
       "setDataPostulanteAction",

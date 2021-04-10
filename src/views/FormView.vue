@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div class="h-screen w-screen flex">
-      <div class="hidden lg:block h-full w-4/6 relative">
-        <div class="absolute top-1/2 right-20 tittle-forms">
+    <div class="  flex h-screen">
+      <div class="hidden lg:block  width-7 relative fondo">
+        <div class="pl-20 my-6 absolute bottom-0 top-0 w-full flex flex-col justify-between">
+          <div class="absolute top-1/2 right-20 tittle-forms">
           <h1 class="text-5xl title__principal__2">
             !Explota todo tu potencial <br />
             tecnologico!
@@ -13,36 +14,36 @@
             de especializacion
           </h3>
         </div>
-        <div class="absolute left-20 top-6">
+        <div class=" left-20 top-6">
           <router-link to="/">
             <img src="../assets/images/logo-pachaqtec.png" alt="" />
           </router-link>
         </div>
-        <div class="absolute bottom-10 left-20 patrociadores">
-          <div><p class="text-respaldo text">Con respaldo de:</p></div>
-          <div class="flex items-center justify-around">
+        <div class=" patrociadores">
+          <div><p class="text__small">Con respaldo de:</p></div>
+          <div class="flex items-center justify-between">
             <img src="../assets/images/logo-intercorp-NE.png" alt="" />
             <img src="../assets/images/logo-idat-NE.png" alt="" />
             <img src="../assets/images/logo-zegel-NE.png" alt="" />
           </div>
         </div>
-        <img class="h-full" src="../assets/images/fondo-azul.png" alt="" />
+        </div>
       </div>
 
-      <div class="flex-1 h-screen flex justify-center items-center relative">
-        <div class="absolute top-0 w-8/12 h-20 flex">
-          <div class="flex-1">
+      <div class="  width-3">
+        <div class="  flex tab">
+          <div class="flex-1 "> 
             <button
               @click="showFormLogin"
-              class="h-full w-full btn-login text-xl font-extrabold"
+              class="h-full w-full btn-login subtitle__third__2 tab__item"
             >
               Iniciar Sesion
             </button>
           </div>
-          <div class="flex-1">
+          <div class="flex-1 ">
             <button
               @click="showFormRegister"
-              class="h-full w-full btn-register text-xl font-extrabold"
+              class="h-full w-full btn-register subtitle__third__2 tab__item"
               autofocus
             >
               Registrarse
@@ -91,8 +92,11 @@ export default {
 
 <style lang="scss">
 @import "../assets/css/variables.scss";
-
-.btn-register:focus {
+ .fondo{
+   background-image: url("~@/assets/images/fondo-azul.png");
+   background-size: cover;
+ }
+.btn-register:focus, .btn-register:active {
   outline: none;
 
   border-bottom: 6px solid #000425;
@@ -106,7 +110,7 @@ export default {
     color: black;
   }
 }
-.btn-login:focus {
+.btn-login:focus, .btn-login:active {
   outline: none;
 
   border-bottom: 6px solid #000425;
@@ -121,10 +125,15 @@ export default {
   font-weight: bolder;
   color: white;
 }
-.text-respaldo {
-  color: white;
+.tab{
+  box-shadow: 1px 0 3px #0a0a0a6e;
+  margin-bottom: 2em;
+  &__item{
+    padding: 1.5em;
+  }
 }
 .patrociadores {
-  width: 280px;
+  width: 220px;
+  color: white;
 }
 </style>
