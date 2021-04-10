@@ -3,12 +3,13 @@ import App from './App.vue'
 import "./assets/css/styles.scss"
 import router from './router'
 import store from './store'
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-import SimpleVueValidation from 'simple-vue-validator';
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
+import SimpleVueValidation from 'simple-vue-validator'
 
 let app;
+
  // Your web app's Firebase configuration
  var firebaseConfig = {
     apiKey: "AIzaSyDxtbk3M-hnemxClXMnagRuZIubE4IEkWM",
@@ -23,10 +24,11 @@ let app;
 
   export const db = firebase.firestore();
   
+  // createApp(App).use(store).use(router).use(SimpleVueValidation).mount('#app')
 
   firebase.auth().onAuthStateChanged(function (user){
-   if(!app){
-     app= createApp(App).use(store).use(router).mount('#app')
+    if(!app){
+      app = createApp(App).use(store).use(router).use(SimpleVueValidation).mount('#app')
     }
   })
 

@@ -13,7 +13,7 @@
           <button
             @click="getItem(cursoindex)"
             class=" bloqueo subtitle__third flex items-center"
-            :class="{ disabled: isHere }"
+            :class="{ disabled: isActive }"
           >
             <i class="material-icons mr-1">add_shopping_cart</i>Agregar al
             carrito
@@ -38,18 +38,21 @@ export default {
     return {
       imgCurso: "",
       isHere: Boolean,
+      isActive: Boolean,
     };
   },
   computed: {
     ...mapState(["listItems", "shopCart"]),
   },
+  mounted() {},
   methods: {
     ...mapActions(["addItemCartAction"]),
     getItem(idx) {
       this.isHere = this.shopCart.includes(this.listItems[idx]);
+
       if (!this.isHere) {
+        this.isActive = false;
         this.addItemCartAction(this.listItems[idx]);
-        
       }
     },
   },
@@ -92,12 +95,11 @@ export default {
     padding: 1.3em;
   }
 }
-button:focus{
-  outline:none;
+button:focus {
+  outline: none;
 }
-.bloqueo:not(.disabled){
-  
-    cursor: default;
-    opacity: .3;
+.bloqueo:not(.disabled) {
+  cursor: default;
+  opacity: 0.3;
 }
 </style>

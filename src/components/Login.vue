@@ -60,7 +60,7 @@ export default {
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
           .then((data) => this.$router.replace("/"))
-          .catch((er) => console.log(er));
+          .catch((err) => console.log(err));
       } catch (error) {
         console.log(error);
       }
