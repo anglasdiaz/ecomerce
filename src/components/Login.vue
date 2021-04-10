@@ -2,20 +2,10 @@
   <div class="h-4/6 w-3/4 flex justify-center">
     <form class="w-8/12 relative" @submit.prevent="logIn">
       <Input name="Email" tipo="email1">
-          <input
-            type="email"
-            id="email1"
-            v-model="email"
-            required
-          />
+        <input type="email" id="email1" v-model="email" required />
       </Input>
       <Input name="Password" tipo="password1">
-          <input
-            type="password"
-            id="password1"
-            v-model="password"
-            required
-          />
+        <input type="password" id="password1" v-model="password" required />
       </Input>
       <div class="mt-12 xl:mt-64">
         <Btn class="max-w-md" name="Ingresar" />
@@ -45,8 +35,8 @@ export default {
         firebase
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
-          .then((data) => this.$router.push("/"))
-          .catch((err) => console.log(err));
+          .then((data) => this.$router.replace("/"))
+          .catch((er) => console.log(er));
       } catch (error) {
         console.log(error);
       }
@@ -54,7 +44,7 @@ export default {
   },
   components: {
     Btn,
-    Input
+    Input,
   },
 };
 </script>

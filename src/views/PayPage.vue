@@ -32,7 +32,7 @@
               <h3 v-show="paidFor" class="title__principal__2">
                 Algo salio mal intentelo de nuevo
               </h3>
-              <h3 class="title__principal__2">S/ {{ totalPrice }}.00</h3>
+              <h3 class="title__principal__2">S/ {{ total }}.00</h3>
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@ import Btn from "@/components/Btn.vue";
 import { mapGetters } from "vuex";
 import firebase from "firebase";
 import { userRouter, userRoute } from "vue-router";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 import router from "../router";
 
 export default {
@@ -69,14 +69,14 @@ export default {
     Btn,
   },
   created() {
-    this.product.price = this.totalPrice;
+    this.product.price = this.total;
     this.setFacturaTotalAction(this.product.price);
   },
   mounted() {
-    const user = firebase.auth().currentUser;
-    if (!user) {
-      router.replace("/");
-    }
+    // const user = firebase.auth().currentUser;
+    // if (!user) {
+    //   router.replace("/");
+    // }
     const script = document.createElement("script");
     script.src =
       "https://www.paypal.com/sdk/js?client-id=ASU50hAQEgX8CLmIZIi_xDMQZLO9vQMMHDG-nd_OKy3CqlGFm71DCW4s81ABNv04V97rAT04WWsdxXJn&disable-funding=credit,card";
@@ -84,6 +84,7 @@ export default {
     document.body.appendChild(script);
   },
   computed: {
+    ...mapState(["total"]),
     ...mapGetters(["totalPrice"]),
   },
   methods: {

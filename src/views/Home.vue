@@ -124,12 +124,12 @@
               title="Aprende de Expertos"
               text="Aprende directamente de expertos del mercado a través del análisis y solución de problemas de programación. Utilizando los frameworks y herramientas de mayor relevancia dentro del mundo del coding."
             ></CardLine>
-             <CardLine
+            <CardLine
               icon="laptop"
               title="Clases Virtuales"
               text="Aprovecha tu tiempo al máximo en nuestras clases virtuales y participa presencialmente de nuestras hackathones semanales para conocer y participar de la comunidad profesional que liderará la transformación tecnológica del Perú."
             ></CardLine>
-             <CardLine
+            <CardLine
               icon="card_travel"
               title="Empleabilidad"
               text="Al finalizar el programa y certificarte a nombre de IDAT, podrás acceder a ofertas 
@@ -193,26 +193,23 @@ export default {
       "getDataFirebaseAction",
       "setDataPostulanteAction",
       "setDataShopCartAction",
+      "getCouponFirebaseAction",
     ]),
     getDataPostulante() {
       this.setDataPostulanteAction(this.dataPostulante);
       router.replace("/formview");
     },
   },
-  beforeCreate() {
-    try {
-      firebase.auth().onAuthStateChanged(function(user) {
-        console.dir(user);
-        if (user) {
-          router.replace("/");
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  mounted() {
+    // const user = firebase.auth().currentUser;
+    // console.log(user);
+    // if (!user) {
+    //   router.replace("/");
+    // }
   },
   created() {
     this.getDataFirebaseAction();
+    this.getCouponFirebaseAction();
   },
 };
 </script>

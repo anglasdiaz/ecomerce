@@ -5,6 +5,7 @@ import { customRef } from '@vue/reactivity';
 
 export default createStore({
   state: {
+    coupons:[],
     listItems:[],
     postulante:{},
     shopCart:[],
@@ -14,6 +15,10 @@ export default createStore({
   mutations: {
     getDataFirebase(state,newData){
       state.listItems = newData;
+    },
+    getCouponFirebase(state,newCoupon){
+      state.coupons = newCoupon;
+      console.log(state.coupons);
     },
     setDataPostulante(state,dataPostulante){
       state.postulante = dataPostulante;
@@ -32,6 +37,10 @@ export default createStore({
     },
     setFacturaTotal(state,total){
       state.facturaTotal=total
+    },
+    applieDiscount(state,DSC){
+      state.total = state.total - (state.total*DSC)
+      console.log(state.total)
     }
   },
   actions: {
@@ -42,6 +51,14 @@ export default createStore({
         arrdata.push(result.data())
       })
       commit('getDataFirebase', arrdata)
+     },
+     async getCouponFirebaseAction({commit}){
+      const data = await db.collection('coupons').get()
+      let arrdata=[]
+      data.forEach(result=>{
+        arrdata.push(result.data())
+      })
+      commit('getCouponFirebase', arrdata)
      },
       setDataPostulanteAction({commit},dataPostulante){
         dataPostulante={
@@ -70,6 +87,9 @@ export default createStore({
       },
       setFacturaTotalAction({commit},total){
         commit('setFacturaTotal',total)
+      },
+      applieDiscountAction({commit}, DSC){
+        commit('applieDiscount',DSC)
       }
       
   },

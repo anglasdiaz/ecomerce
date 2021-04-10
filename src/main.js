@@ -7,6 +7,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
+let app;
  // Your web app's Firebase configuration
  var firebaseConfig = {
     apiKey: "AIzaSyDxtbk3M-hnemxClXMnagRuZIubE4IEkWM",
@@ -20,5 +21,12 @@ import 'firebase/firestore';
   firebase.initializeApp(firebaseConfig);
 
   export const db = firebase.firestore();
+  
 
-createApp(App).use(store).use(router).mount('#app')
+  firebase.auth().onAuthStateChanged(function (user){
+   if(!app){
+     app= createApp(App).use(store).use(router).mount('#app')
+    }
+  })
+
+  

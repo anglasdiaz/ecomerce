@@ -6,7 +6,9 @@
           ><img src="../assets/images/logo-pachaqtec.png" alt=""
         /></router-link>
         <div class="header__item relative">
-          <span class="absolute">{{ this.shopCart.length }}</span>
+          <span class="absolute hidden lg:inline-block">{{
+            this.shopCart.length
+          }}</span>
           <router-link to="/shoppingcart">
             <i class="material-icons hidden lg:inline-block mx-3"
               >shopping_cart</i
@@ -38,7 +40,6 @@
 
 <script>
 import firebase from "firebase";
-import { userRoute, useRouter } from "vue-router";
 import router from "../router";
 import { mapState } from "vuex";
 
@@ -52,14 +53,15 @@ export default {
   },
   computed: {
     ...mapState(["shopCart"]),
-
     loginOut() {
       try {
         firebase
           .auth()
           .signOut()
-          .then(() => router.replace("/"));
+          .then(() => this.$router.replace("/"))
+          .catch((er) => console.log(er));
         this.isLogOut = false;
+        console.log(this.isLogOut);
       } catch (error) {
         console.log(error);
       }
@@ -69,21 +71,22 @@ export default {
     menuOpenT() {
       this.isActive = !this.isActive;
     },
-    async verify() {
-      try {
-        const user = await firebase.auth().currentUser;
-        if (user) {
-          this.isLogOut = true;
-        }
-      } catch (error) {
-        console.log(error);
+    async checking() {
+      const user = await firebase.auth().currentUser;
+      if (user) {
+        this.isLogOut = true;
+        console.log(this.isLogOut);
+      } else {
+        this.isLogOut = false;
       }
     },
   },
-  async created() {
-    await this.verify();
+  created() {
+    console.log(this.isLogOut);
   },
-  mounted() {},
+  mounted() {
+    this.checking();
+  },
 };
 </script>
 <style lang="scss">

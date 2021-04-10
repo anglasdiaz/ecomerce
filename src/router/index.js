@@ -4,6 +4,7 @@ import FormView from '../views/FormView.vue'
 import ShoppingCart from '../views/ShoppingCart.vue'
 import PayPage from '../views/PayPage.vue'
 import DetailBuy from '../views/DetailBuy.vue'
+import firebase from 'firebase'
 
 const routes = [
   {
@@ -14,7 +15,10 @@ const routes = [
   {
     path: '/shoppingcart',
     name: 'ShoppingCart',
-    component: ShoppingCart
+    component: ShoppingCart,
+    meta:{
+      requireAuth:true
+    }
   },
   {
     path: '/curso/:id',
@@ -32,19 +36,35 @@ const routes = [
   {
     path:'/paypage',
     name:'PayPage',
-    component:PayPage
+    component:PayPage,
+    meta:{
+      requireAuth:true
+    }
   }
   ,
   {
     path:'/detailBuy',
     name:'DetailBuy',
-    component:DetailBuy
+    component:DetailBuy,
+    meta:{
+      requireAuth:true
+    }
   }
 ]
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+router.beforeEach((to,from,next)=>{
+  let user= firebase.auth().currentUser;
+  let authentified = to.matched.some(record=>record.meta.requireAuth);
+ 
+  if(authentified && !user){
+    next('/')
+  }else{
+    next()
+  }
+ })
+
 
 export default router

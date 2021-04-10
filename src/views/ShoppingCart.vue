@@ -27,12 +27,12 @@
                   S/.{{ totalPrice() }}
                 </p>
               </div>
-              <Input name="Ingrese Cupon" tipo="email">
-                <input type="email" id="email" required />
+              <Input name="Ingrese Cupon" tipo="text">
+                <input type="text" id="text" v-model="couponName" required />
               </Input>
               <div>
                 <router-link to="/paypage">
-                  <Btn name="Continuar" />
+                  <Btn @click="applyDiscount" name="Continuar" />
                 </router-link>
               </div>
             </div>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 import CardLine from "../components/CardLine";
 import HeaderP from "../components/HeaderP";
 import ShoppingItems from "../components/ShoppingItems.vue";
@@ -63,13 +63,24 @@ export default {
     Input,
   },
   data() {
-    return {};
+    return {
+      couponName: "",
+    };
   },
   computed: {
-    ...mapState(["shopCart"]),
+    ...mapState(["shopCart", "coupons", "total"]),
   },
   methods: {
     ...mapGetters(["totalPrice"]),
+    ...mapActions(["applieDiscountAction"]),
+    applyDiscount() {
+      this.coupons.forEach((coupon) => {
+        if (coupon.name === this.couponName) {
+          this.applieDiscountAction(coupon.DSC);
+        }
+      });
+    },
+
     // totalToPay() {
     //   const total = this.shopCart.reduce(
     //     (accumulator, currentValue) => accumulator.price + currentValue.price
@@ -78,10 +89,10 @@ export default {
     // },
   },
   mounted() {
-    const user = firebase.auth().currentUser;
-    if (!user) {
-      router.replace("/");
-    }
+    // const user = firebase.auth().currentUser;
+    // if (!user) {
+    //   router.replace("/");
+    // }
   },
 };
 </script>

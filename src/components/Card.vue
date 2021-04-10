@@ -26,6 +26,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import { setItemLocalStorage } from "../api/cart";
 export default {
   name: "Card",
   props: {

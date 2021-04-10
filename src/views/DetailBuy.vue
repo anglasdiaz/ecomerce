@@ -67,13 +67,12 @@ export default {
   },
   computed: {
     ...mapState(["facturaTotal"]),
-    ...mapGetters(["totalPrice"]),
   },
   mounted() {
-    const user = firebase.auth().currentUser;
-    if (!user) {
-      router.replace("/");
-    }
+    // const user = firebase.auth().currentUser;
+    // if (!user) {
+    //   router.replace("/");
+    // }
   },
 };
 </script>
