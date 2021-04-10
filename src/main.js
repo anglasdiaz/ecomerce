@@ -6,6 +6,7 @@ import store from './store'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import SimpleVueValidation from 'simple-vue-validator';
 
 let app;
  // Your web app's Firebase configuration

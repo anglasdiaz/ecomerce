@@ -1,9 +1,5 @@
 /*colores*/
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 $color-principal: #5640FF;
 $color-secundary: #da168f;
 $color-third:#fff;
@@ -77,6 +73,9 @@ body{
         font-family: $font-poppins;
         font-weight: 600;
         font-size: 14px;
+        &__2{
+            font-weight: 700; 
+        }
     }
     &__basic{
         font-family: $font-poppins;
@@ -93,11 +92,25 @@ body{
 }
 
 input {
-    border: 1px solid rgb(83, 83, 83);
-    margin-bottom: 8px;
+    border: 1px solid #8B9099;
+    margin-bottom: 9px;
     border-radius: 5px;
     width: 100%;
+    &:focus{
+        outline: #9a8dfd auto 1px;
+    }
 }
 input[type=checkbox]{
     width:initial;
+}
+.width-7{
+    width: 70%;
+}
+.width-3{
+    width: 30%;
+}
+@media (min-width: 1280px){
+    .container {
+        max-width: 1200px;
+    }
 }

@@ -12,7 +12,7 @@
           </button>
           <button
             @click="getItem(cursoindex)"
-            class="subtitle__third flex items-center"
+            class=" bloqueo subtitle__third flex items-center"
             :class="{ disabled: isHere }"
           >
             <i class="material-icons mr-1">add_shopping_cart</i>Agregar al
@@ -49,12 +49,13 @@ export default {
       this.isHere = this.shopCart.includes(this.listItems[idx]);
       if (!this.isHere) {
         this.addItemCartAction(this.listItems[idx]);
+        
       }
     },
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/css/variables.scss";
 .card {
   width: 100%;
@@ -62,10 +63,10 @@ export default {
   position: relative;
   overflow: hidden;
   border-radius: 7px;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   @include mediaQ(796px) {
     width: 40%;
-    margin-right: 4em;
+    margin-right: 2.5em;
   }
   @include mediaQ(1600px) {
     width: 35%;
@@ -90,5 +91,13 @@ export default {
     width: 100%;
     padding: 1.3em;
   }
+}
+button:focus{
+  outline:none;
+}
+.bloqueo:not(.disabled){
+  
+    cursor: default;
+    opacity: .3;
 }
 </style>
